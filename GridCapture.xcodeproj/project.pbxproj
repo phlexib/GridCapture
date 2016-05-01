@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32261CD65C07007AC111 /* AppDelegate.swift */; };
+		B59C32291CD65C07007AC111 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32281CD65C07007AC111 /* ViewController.swift */; };
+		B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59C322A1CD65C07007AC111 /* GridCapture.xcdatamodeld */; };
+		B59C322E1CD65C07007AC111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59C322D1CD65C07007AC111 /* Assets.xcassets */; };
+		B59C32311CD65C07007AC111 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59C322F1CD65C07007AC111 /* Main.storyboard */; };
+		B59C323C1CD65C07007AC111 /* GridCaptureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C323B1CD65C07007AC111 /* GridCaptureTests.swift */; };
+		B59C32471CD65C07007AC111 /* GridCaptureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32461CD65C07007AC111 /* GridCaptureUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B59C32381CD65C07007AC111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59C321B1CD65C06007AC111 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B59C32221CD65C06007AC111;
+			remoteInfo = GridCapture;
+		};
+		B59C32431CD65C07007AC111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59C321B1CD65C06007AC111 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B59C32221CD65C06007AC111;
+			remoteInfo = GridCapture;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B59C32231CD65C06007AC111 /* GridCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59C32261CD65C07007AC111 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B59C32281CD65C07007AC111 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B59C322B1CD65C07007AC111 /* GridCapture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GridCapture.xcdatamodel; sourceTree = "<group>"; };
+		B59C322D1CD65C07007AC111 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B59C32301CD65C07007AC111 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B59C32321CD65C07007AC111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59C32371CD65C07007AC111 /* GridCaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridCaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59C323B1CD65C07007AC111 /* GridCaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCaptureTests.swift; sourceTree = "<group>"; };
+		B59C323D1CD65C07007AC111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59C32421CD65C07007AC111 /* GridCaptureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridCaptureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59C32461CD65C07007AC111 /* GridCaptureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCaptureUITests.swift; sourceTree = "<group>"; };
+		B59C32481CD65C07007AC111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B59C32201CD65C06007AC111 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59C32341CD65C07007AC111 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59C323F1CD65C07007AC111 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B59C321A1CD65C06007AC111 = {
+			isa = PBXGroup;
+			children = (
+				B59C32251CD65C06007AC111 /* GridCapture */,
+				B59C323A1CD65C07007AC111 /* GridCaptureTests */,
+				B59C32451CD65C07007AC111 /* GridCaptureUITests */,
+				B59C32241CD65C06007AC111 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B59C32241CD65C06007AC111 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B59C32231CD65C06007AC111 /* GridCapture.app */,
+				B59C32371CD65C07007AC111 /* GridCaptureTests.xctest */,
+				B59C32421CD65C07007AC111 /* GridCaptureUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B59C32251CD65C06007AC111 /* GridCapture */ = {
+			isa = PBXGroup;
+			children = (
+				B59C32261CD65C07007AC111 /* AppDelegate.swift */,
+				B59C32281CD65C07007AC111 /* ViewController.swift */,
+				B59C322D1CD65C07007AC111 /* Assets.xcassets */,
+				B59C322F1CD65C07007AC111 /* Main.storyboard */,
+				B59C32321CD65C07007AC111 /* Info.plist */,
+				B59C322A1CD65C07007AC111 /* GridCapture.xcdatamodeld */,
+			);
+			path = GridCapture;
+			sourceTree = "<group>";
+		};
+		B59C323A1CD65C07007AC111 /* GridCaptureTests */ = {
+			isa = PBXGroup;
+			children = (
+				B59C323B1CD65C07007AC111 /* GridCaptureTests.swift */,
+				B59C323D1CD65C07007AC111 /* Info.plist */,
+			);
+			path = GridCaptureTests;
+			sourceTree = "<group>";
+		};
+		B59C32451CD65C07007AC111 /* GridCaptureUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B59C32461CD65C07007AC111 /* GridCaptureUITests.swift */,
+				B59C32481CD65C07007AC111 /* Info.plist */,
+			);
+			path = GridCaptureUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B59C32221CD65C06007AC111 /* GridCapture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59C324B1CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCapture" */;
+			buildPhases = (
+				B59C321F1CD65C06007AC111 /* Sources */,
+				B59C32201CD65C06007AC111 /* Frameworks */,
+				B59C32211CD65C06007AC111 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GridCapture;
+			productName = GridCapture;
+			productReference = B59C32231CD65C06007AC111 /* GridCapture.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B59C32361CD65C07007AC111 /* GridCaptureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59C324E1CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCaptureTests" */;
+			buildPhases = (
+				B59C32331CD65C07007AC111 /* Sources */,
+				B59C32341CD65C07007AC111 /* Frameworks */,
+				B59C32351CD65C07007AC111 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B59C32391CD65C07007AC111 /* PBXTargetDependency */,
+			);
+			name = GridCaptureTests;
+			productName = GridCaptureTests;
+			productReference = B59C32371CD65C07007AC111 /* GridCaptureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B59C32411CD65C07007AC111 /* GridCaptureUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59C32511CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCaptureUITests" */;
+			buildPhases = (
+				B59C323E1CD65C07007AC111 /* Sources */,
+				B59C323F1CD65C07007AC111 /* Frameworks */,
+				B59C32401CD65C07007AC111 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B59C32441CD65C07007AC111 /* PBXTargetDependency */,
+			);
+			name = GridCaptureUITests;
+			productName = GridCaptureUITests;
+			productReference = B59C32421CD65C07007AC111 /* GridCaptureUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B59C321B1CD65C06007AC111 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Benjamin Rohel";
+				TargetAttributes = {
+					B59C32221CD65C06007AC111 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					B59C32361CD65C07007AC111 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = B59C32221CD65C06007AC111;
+					};
+					B59C32411CD65C07007AC111 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = B59C32221CD65C06007AC111;
+					};
+				};
+			};
+			buildConfigurationList = B59C321E1CD65C06007AC111 /* Build configuration list for PBXProject "GridCapture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B59C321A1CD65C06007AC111;
+			productRefGroup = B59C32241CD65C06007AC111 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B59C32221CD65C06007AC111 /* GridCapture */,
+				B59C32361CD65C07007AC111 /* GridCaptureTests */,
+				B59C32411CD65C07007AC111 /* GridCaptureUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B59C32211CD65C06007AC111 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59C322E1CD65C07007AC111 /* Assets.xcassets in Resources */,
+				B59C32311CD65C07007AC111 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59C32351CD65C07007AC111 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59C32401CD65C07007AC111 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B59C321F1CD65C06007AC111 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59C32291CD65C07007AC111 /* ViewController.swift in Sources */,
+				B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */,
+				B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59C32331CD65C07007AC111 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59C323C1CD65C07007AC111 /* GridCaptureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59C323E1CD65C07007AC111 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59C32471CD65C07007AC111 /* GridCaptureUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B59C32391CD65C07007AC111 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B59C32221CD65C06007AC111 /* GridCapture */;
+			targetProxy = B59C32381CD65C07007AC111 /* PBXContainerItemProxy */;
+		};
+		B59C32441CD65C07007AC111 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B59C32221CD65C06007AC111 /* GridCapture */;
+			targetProxy = B59C32431CD65C07007AC111 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B59C322F1CD65C07007AC111 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B59C32301CD65C07007AC111 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B59C32491CD65C07007AC111 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B59C324A1CD65C07007AC111 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B59C324C1CD65C07007AC111 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GridCapture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = benrohel.GridCapture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B59C324D1CD65C07007AC111 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GridCapture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = benrohel.GridCapture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B59C324F1CD65C07007AC111 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GridCaptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = benrohel.GridCaptureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GridCapture.app/Contents/MacOS/GridCapture";
+			};
+			name = Debug;
+		};
+		B59C32501CD65C07007AC111 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GridCaptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = benrohel.GridCaptureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GridCapture.app/Contents/MacOS/GridCapture";
+			};
+			name = Release;
+		};
+		B59C32521CD65C07007AC111 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GridCaptureUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = benrohel.GridCaptureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GridCapture;
+			};
+			name = Debug;
+		};
+		B59C32531CD65C07007AC111 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GridCaptureUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = benrohel.GridCaptureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GridCapture;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B59C321E1CD65C06007AC111 /* Build configuration list for PBXProject "GridCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59C32491CD65C07007AC111 /* Debug */,
+				B59C324A1CD65C07007AC111 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B59C324B1CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59C324C1CD65C07007AC111 /* Debug */,
+				B59C324D1CD65C07007AC111 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B59C324E1CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCaptureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59C324F1CD65C07007AC111 /* Debug */,
+				B59C32501CD65C07007AC111 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B59C32511CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCaptureUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59C32521CD65C07007AC111 /* Debug */,
+				B59C32531CD65C07007AC111 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B59C322A1CD65C07007AC111 /* GridCapture.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B59C322B1CD65C07007AC111 /* GridCapture.xcdatamodel */,
+			);
+			currentVersion = B59C322B1CD65C07007AC111 /* GridCapture.xcdatamodel */;
+			path = GridCapture.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B59C321B1CD65C06007AC111 /* Project object */;
+}
