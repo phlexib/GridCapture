@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B541D8311CD73487002F5C44 /* RigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8301CD73487002F5C44 /* RigView.swift */; };
+		B541D8351CD7359E002F5C44 /* RigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8341CD7359E002F5C44 /* RigViewController.swift */; };
 		B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32261CD65C07007AC111 /* AppDelegate.swift */; };
 		B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59C322A1CD65C07007AC111 /* GridCapture.xcdatamodeld */; };
 		B59C322E1CD65C07007AC111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59C322D1CD65C07007AC111 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		B59C32731CD65D5C007AC111 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59C32721CD65D5C007AC111 /* Main.storyboard */; };
 		B59C327D1CD65F5A007AC111 /* ORSSerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C327A1CD65EF8007AC111 /* ORSSerial.framework */; };
 		B59C32811CD65FC0007AC111 /* SerialCommunicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */; };
+		B59C32861CD72ECF007AC111 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C32841CD72ECF007AC111 /* Quartz.framework */; };
+		B59C32871CD72ECF007AC111 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C32851CD72ECF007AC111 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B541D8301CD73487002F5C44 /* RigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigView.swift; sourceTree = "<group>"; };
+		B541D8341CD7359E002F5C44 /* RigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RigViewController.swift; path = GridCapture/RigViewController.swift; sourceTree = "<group>"; };
 		B59C32231CD65C06007AC111 /* GridCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59C32261CD65C07007AC111 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59C322B1CD65C07007AC111 /* GridCapture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GridCapture.xcdatamodel; sourceTree = "<group>"; };
@@ -96,6 +102,8 @@
 		B59C32721CD65D5C007AC111 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ORSSerialPort.xcodeproj; path = "Frameworks/ORSSerialPort/Framework Project/ORSSerialPort.xcodeproj"; sourceTree = "<group>"; };
 		B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialCommunicationController.swift; sourceTree = "<group>"; };
+		B59C32841CD72ECF007AC111 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		B59C32851CD72ECF007AC111 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59C32861CD72ECF007AC111 /* Quartz.framework in Frameworks */,
+				B59C32871CD72ECF007AC111 /* QuartzCore.framework in Frameworks */,
 				B59C327D1CD65F5A007AC111 /* ORSSerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,10 +134,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B541D82F1CD731AA002F5C44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B59C32841CD72ECF007AC111 /* Quartz.framework */,
+				B59C32851CD72ECF007AC111 /* QuartzCore.framework */,
+				B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		B59C321A1CD65C06007AC111 = {
 			isa = PBXGroup;
 			children = (
-				B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */,
+				B541D8341CD7359E002F5C44 /* RigViewController.swift */,
 				B59C32251CD65C06007AC111 /* GridCapture */,
 				B59C323A1CD65C07007AC111 /* GridCaptureTests */,
 				B59C32451CD65C07007AC111 /* GridCaptureUITests */,
@@ -148,6 +169,7 @@
 		B59C32251CD65C06007AC111 /* GridCapture */ = {
 			isa = PBXGroup;
 			children = (
+				B541D82F1CD731AA002F5C44 /* Frameworks */,
 				B59C32571CD65C43007AC111 /* ViewControllers */,
 				B59C32561CD65C39007AC111 /* Custom Classes */,
 				B59C32551CD65C30007AC111 /* Nib Files */,
@@ -186,6 +208,7 @@
 				B59C325A1CD65C6B007AC111 /* RoundButton.swift */,
 				B59C325B1CD65C6B007AC111 /* StatusBtn.swift */,
 				B59C325C1CD65C6B007AC111 /* StyleKit.swift */,
+				B541D8301CD73487002F5C44 /* RigView.swift */,
 			);
 			name = Style;
 			sourceTree = "<group>";
@@ -390,6 +413,8 @@
 				B59C326A1CD65C88007AC111 /* Rig.swift in Sources */,
 				B59C32611CD65C6B007AC111 /* StyleKit.swift in Sources */,
 				B59C32711CD65D05007AC111 /* ViewController.swift in Sources */,
+				B541D8351CD7359E002F5C44 /* RigViewController.swift in Sources */,
+				B541D8311CD73487002F5C44 /* RigView.swift in Sources */,
 				B59C32681CD65C88007AC111 /* GridController.swift in Sources */,
 				B59C326F1CD65CFA007AC111 /* LabelCollectionViewItemView.swift in Sources */,
 				B59C325D1CD65C6B007AC111 /* LeftMenu.swift in Sources */,
@@ -615,6 +640,7 @@
 				B59C324D1CD65C07007AC111 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B59C324E1CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCaptureTests" */ = {
 			isa = XCConfigurationList;
@@ -623,6 +649,7 @@
 				B59C32501CD65C07007AC111 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B59C32511CD65C07007AC111 /* Build configuration list for PBXNativeTarget "GridCaptureUITests" */ = {
 			isa = XCConfigurationList;
@@ -631,6 +658,7 @@
 				B59C32531CD65C07007AC111 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

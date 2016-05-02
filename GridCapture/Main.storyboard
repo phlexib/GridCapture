@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Yfx-4Z-l1H">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
@@ -692,7 +692,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView wantsLayer="YES" selectable="YES" id="uMC-z8-SoI">
-                                            <rect key="frame" x="0.0" y="3" width="252" height="1092"/>
+                                            <rect key="frame" x="0.0" y="3" width="250" height="1092"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewGridLayout key="collectionViewLayout" id="VYA-jJ-L3H"/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -707,7 +707,7 @@
                                     <rect key="frame" x="1" y="285" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.0042372881355932203" horizontal="NO" id="O5v-LS-cfb">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.012711864406779657" horizontal="NO" id="O5v-LS-cfb">
                                     <rect key="frame" x="855" y="1" width="16" height="620"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -724,14 +724,6 @@
                                             <segue destination="aQl-Lz-OqB" kind="embed" id="N2y-03-6Rc"/>
                                         </connections>
                                     </containerView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sCE-2m-vRZ">
-                                        <rect key="frame" x="18" y="289" width="34" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="xPos" id="poK-gm-w7A">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="LLI-BA-82w" firstAttribute="leading" secondItem="8UA-cu-MSp" secondAttribute="leading" id="GFc-X9-jgK"/>
@@ -1206,7 +1198,6 @@
                         <outlet property="xEndPositionText" destination="xaH-Nx-8At" id="L0N-vZ-R7r"/>
                         <outlet property="xPositionLabel" destination="dhM-58-7A3" id="URK-g1-lwg"/>
                         <outlet property="xStartPositionText" destination="8KJ-9a-UM8" id="r0c-wg-rtH"/>
-                        <outlet property="xStepLabel" destination="sCE-2m-vRZ" id="a3u-p3-oVG"/>
                         <outlet property="yEndPositionText" destination="Gmv-LJ-Zqv" id="pm6-S4-lft"/>
                         <outlet property="yPositionLabel" destination="4Ko-Qd-Cil" id="4MK-jY-2Nl"/>
                         <outlet property="yStartPositionText" destination="Was-wT-2nS" id="IZp-mO-Z2c"/>
@@ -1229,6 +1220,19 @@
                 </arrayController>
             </objects>
             <point key="canvasLocation" x="226" y="1509"/>
+        </scene>
+        <!--Rig View Controller-->
+        <scene sceneID="LA8-cw-3Ga">
+            <objects>
+                <viewController id="Yfx-4Z-l1H" customClass="RigViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ORY-UT-ZIQ" customClass="RigView" customModule="GridCapture" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="4fp-bh-pR0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="1397"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4Hk-Mu-bei">
@@ -1309,8 +1313,8 @@
                                     <action selector="send:" target="BC7-zL-GaD" id="Qxx-oj-eI5"/>
                                 </connections>
                             </button>
-                            <button identifier="up" translatesAutoresizingMaskIntoConstraints="NO" id="opB-zW-hPg" userLabel="upBtn">
-                                <rect key="frame" x="-11850" y="150" width="24001" height="24"/>
+                            <button identifier="up" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="opB-zW-hPg" userLabel="upBtn">
+                                <rect key="frame" x="-11850" y="150" width="10000" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Ed1-WN-YX5"/>
                                     <constraint firstAttribute="width" constant="24001" id="SAy-M5-hVM"/>
@@ -1367,9 +1371,9 @@
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
+                                    <binding destination="BC7-zL-GaD" name="selectedObject" keyPath="serialPort" previousBinding="itA-Vf-WvS" id="bQs-VE-9SN"/>
                                     <binding destination="BC7-zL-GaD" name="content" keyPath="serialPortManager.availablePorts" id="2U7-Vt-Nzo"/>
                                     <binding destination="BC7-zL-GaD" name="contentValues" keyPath="serialPortManager.availablePorts.name" previousBinding="2U7-Vt-Nzo" id="itA-Vf-WvS"/>
-                                    <binding destination="BC7-zL-GaD" name="selectedObject" keyPath="serialPort" previousBinding="itA-Vf-WvS" id="bQs-VE-9SN"/>
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0O9-ii-mss">
