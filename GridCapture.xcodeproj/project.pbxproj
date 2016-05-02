@@ -26,6 +26,8 @@
 		B59C326F1CD65CFA007AC111 /* LabelCollectionViewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C326E1CD65CFA007AC111 /* LabelCollectionViewItemView.swift */; };
 		B59C32711CD65D05007AC111 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32701CD65D05007AC111 /* ViewController.swift */; };
 		B59C32731CD65D5C007AC111 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59C32721CD65D5C007AC111 /* Main.storyboard */; };
+		B59C327D1CD65F5A007AC111 /* ORSSerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C327A1CD65EF8007AC111 /* ORSSerial.framework */; };
+		B59C32811CD65FC0007AC111 /* SerialCommunicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = B59C32221CD65C06007AC111;
 			remoteInfo = GridCapture;
+		};
+		B59C32791CD65EF8007AC111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9DCA89121A2BB106009285EB;
+			remoteInfo = ORSSerial;
+		};
+		B59C327B1CD65EF8007AC111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D7472131B6D7767002D8B10;
+			remoteInfo = "ORSSerialPort Tests";
+		};
+		B59C327E1CD65F6D007AC111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DCA89111A2BB106009285EB;
+			remoteInfo = ORSSerial;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -71,6 +94,8 @@
 		B59C326E1CD65CFA007AC111 /* LabelCollectionViewItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewItemView.swift; sourceTree = "<group>"; };
 		B59C32701CD65D05007AC111 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B59C32721CD65D5C007AC111 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ORSSerialPort.xcodeproj; path = "Frameworks/ORSSerialPort/Framework Project/ORSSerialPort.xcodeproj"; sourceTree = "<group>"; };
+		B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialCommunicationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59C327D1CD65F5A007AC111 /* ORSSerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +127,7 @@
 		B59C321A1CD65C06007AC111 = {
 			isa = PBXGroup;
 			children = (
+				B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */,
 				B59C32251CD65C06007AC111 /* GridCapture */,
 				B59C323A1CD65C07007AC111 /* GridCaptureTests */,
 				B59C32451CD65C07007AC111 /* GridCaptureUITests */,
@@ -187,10 +214,20 @@
 		B59C32571CD65C43007AC111 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */,
 				B59C32701CD65D05007AC111 /* ViewController.swift */,
 				B59C326E1CD65CFA007AC111 /* LabelCollectionViewItemView.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59C32751CD65EF8007AC111 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B59C327A1CD65EF8007AC111 /* ORSSerial.framework */,
+				B59C327C1CD65EF8007AC111 /* ORSSerialPort Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +244,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B59C327F1CD65F6D007AC111 /* PBXTargetDependency */,
 			);
 			name = GridCapture;
 			productName = GridCapture;
@@ -283,6 +321,12 @@
 			mainGroup = B59C321A1CD65C06007AC111;
 			productRefGroup = B59C32241CD65C06007AC111 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B59C32751CD65EF8007AC111 /* Products */;
+					ProjectRef = B59C32741CD65EF8007AC111 /* ORSSerialPort.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B59C32221CD65C06007AC111 /* GridCapture */,
@@ -291,6 +335,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B59C327A1CD65EF8007AC111 /* ORSSerial.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ORSSerial.framework;
+			remoteRef = B59C32791CD65EF8007AC111 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B59C327C1CD65EF8007AC111 /* ORSSerialPort Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ORSSerialPort Tests.xctest";
+			remoteRef = B59C327B1CD65EF8007AC111 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B59C32211CD65C06007AC111 /* Resources */ = {
@@ -332,6 +393,7 @@
 				B59C32681CD65C88007AC111 /* GridController.swift in Sources */,
 				B59C326F1CD65CFA007AC111 /* LabelCollectionViewItemView.swift in Sources */,
 				B59C325D1CD65C6B007AC111 /* LeftMenu.swift in Sources */,
+				B59C32811CD65FC0007AC111 /* SerialCommunicationController.swift in Sources */,
 				B59C32601CD65C6B007AC111 /* StatusBtn.swift in Sources */,
 				B59C325E1CD65C6B007AC111 /* RightMenu.swift in Sources */,
 				B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */,
@@ -369,6 +431,11 @@
 			isa = PBXTargetDependency;
 			target = B59C32221CD65C06007AC111 /* GridCapture */;
 			targetProxy = B59C32431CD65C07007AC111 /* PBXContainerItemProxy */;
+		};
+		B59C327F1CD65F6D007AC111 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ORSSerial;
+			targetProxy = B59C327E1CD65F6D007AC111 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

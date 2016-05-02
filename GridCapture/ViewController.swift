@@ -54,6 +54,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     @IBOutlet weak var yEndPositionText: NSTextField!
   
     
+    @IBOutlet weak var xStepLabel: NSTextField!
     
 	override func viewDidLoad() {
 		super.viewDidLoad()

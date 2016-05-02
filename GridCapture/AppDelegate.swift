@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ORSSerial
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
