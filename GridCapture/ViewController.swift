@@ -11,6 +11,9 @@ import Cocoa
 class ViewController: NSViewController, NSCollectionViewDataSource {
     
     // MARK: VARIABLES
+    let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
+    
+   
     var rig : Rig = Rig()
     var currentGrid : GridController = GridController()
     var slices : NSMutableArray = NSMutableArray()
@@ -36,9 +39,16 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         }
     }
     
+    enum TabIndex : Int {
+        case FirstChildTab = 0
+        case SecondChildTab = 1
+    }
+    
     @IBOutlet weak var mainView: NSView!
     @IBOutlet weak var scrollView: NSView!
     @IBOutlet weak var clipView: NSView!
+    @IBOutlet weak var centerContainer: NSView!
+    @IBOutlet weak var segmentedControl: NSSegmentedControl!
     
 	@IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var horizontalSlider: NSSlider!
@@ -56,10 +66,16 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     
     @IBOutlet weak var xStepLabel: NSTextField!
     
+    // MARK : Runtime
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
+        
+        // create default Rig
+        
         rig = Rig(motorStepsRevolution: 200, rigMmWidth: 1500, rigMmHeight: 1500, circomference: 8, microStep: 2)
+        
+        
         // VIEW
         mainView.wantsLayer = true
         mainView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
@@ -68,10 +84,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         clipView.wantsLayer = true
         clipView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
         
-        
-      
-        
-        
+       
         // COLLECTIONVIEW 
 		collectionView.dataSource = self
 //        collectionView.content = currentGrid.slices as [AnyObject]
@@ -84,12 +97,17 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
        
         xPositionLabel.stringValue = stringXPosition
         yPositionLabel.stringValue = stringYPosition
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
     }
     
     
     
     
     //MARK: IBActions
+    
+    @IBAction func changedCenterView(sender: NSSegmentedControl) {
+           }
     
     @IBAction func changeHorizontal(sender: AnyObject) {
         
@@ -162,8 +180,23 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         //        horizontalSlider.enabled = false
         //        verticalSLider.enabled = false
     }
-
     
+    
+    
+    // MARK : NSNOTIFICATIONCENTER
+    
+    func updateCameraPosition(notification:NSNotification){
+       
+        guard let userInfo = notification.userInfo,
+            let xInfo  = userInfo["xPosition"],
+            let yInfo = userInfo["yPosition"]
+            else {
+                print("No userInfo found in notification")
+                return
+        }
+        xPositionLabel.stringValue = String(xInfo)
+        yPositionLabel.stringValue = String(yInfo)
+    }
     
     //MARK: NSCollectionViewDelegate
     
@@ -187,6 +220,23 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
 		return item
 	}
     
+    func addSubview(subView:NSView, toView parentView:NSView) {
+        parentView.addSubview(subView)
+        
+        var viewBindingsDict = [String: AnyObject]()
+        viewBindingsDict["subView"] = subView
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+            options: [], metrics: nil, views: viewBindingsDict))
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+            options: [], metrics: nil, views: viewBindingsDict))
+    }
     
+    func cycleFromViewController(oldViewController: NSViewController, toViewController newViewController: NSViewController) {
+      
+        oldViewController.removeFromParentViewController()
+        self.addChildViewController(newViewController)
+        self.addSubview(newViewController.view, toView:self.centerContainer!)
+ 
+    }
 }
 

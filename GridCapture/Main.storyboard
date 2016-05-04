@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Yfx-4Z-l1H">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
@@ -692,7 +692,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView wantsLayer="YES" selectable="YES" id="uMC-z8-SoI">
-                                            <rect key="frame" x="0.0" y="3" width="250" height="1092"/>
+                                            <rect key="frame" x="0.0" y="3" width="240" height="1092"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewGridLayout key="collectionViewLayout" id="VYA-jJ-L3H"/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -707,7 +707,7 @@
                                     <rect key="frame" x="1" y="285" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.012711864406779657" horizontal="NO" id="O5v-LS-cfb">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="O5v-LS-cfb">
                                     <rect key="frame" x="855" y="1" width="16" height="620"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -715,7 +715,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="8UA-cu-MSp" userLabel="LeftMenu" customClass="LeftMenu" customModule="GridCapture" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="301" height="800"/>
                                 <subviews>
-                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="LLI-BA-82w">
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="LLI-BA-82w" userLabel="serialContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="301" height="281"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="281" id="m8D-sZ-t5v"/>
@@ -748,8 +748,8 @@
                                             <action selector="setGrid:" target="XfG-lQ-9wD" id="Ynq-tb-YaO"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-58-7A3">
-                                        <rect key="frame" x="126" y="20" width="72" height="16"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-58-7A3">
+                                        <rect key="frame" x="211" y="20" width="72" height="16"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X Position : " id="fsR-QL-89R">
                                             <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1086,7 +1086,7 @@
                                     <constraint firstItem="YrD-OC-QOu" firstAttribute="centerY" secondItem="5oJ-rD-rbv" secondAttribute="centerY" id="OSw-Q4-KAT"/>
                                     <constraint firstAttribute="bottom" secondItem="YrD-OC-QOu" secondAttribute="bottom" constant="177" id="P8J-ix-iXs"/>
                                     <constraint firstItem="t55-oS-9MT" firstAttribute="leading" secondItem="9Zw-ku-LPX" secondAttribute="leading" id="PR4-Yv-dZl"/>
-                                    <constraint firstItem="8h8-aQ-Ig6" firstAttribute="trailing" secondItem="dhM-58-7A3" secondAttribute="trailing" id="Pjg-Nh-6Tk"/>
+                                    <constraint firstItem="8h8-aQ-Ig6" firstAttribute="trailing" secondItem="dhM-58-7A3" secondAttribute="trailing" constant="-23" id="Pjg-Nh-6Tk"/>
                                     <constraint firstAttribute="trailing" secondItem="46i-sy-4Rf" secondAttribute="trailing" constant="20" symbolic="YES" id="RLN-lE-QZN"/>
                                     <constraint firstItem="cnB-5X-5DK" firstAttribute="firstBaseline" secondItem="5Dk-ov-ZIL" secondAttribute="firstBaseline" id="SED-U4-WKd"/>
                                     <constraint firstItem="8KJ-9a-UM8" firstAttribute="baseline" secondItem="O9S-kO-OUh" secondAttribute="firstBaseline" id="Vut-nx-fZk"/>
@@ -1160,6 +1160,28 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IWI-HM-bdN" customClass="CustomSegmentedControl" customModule="GridCapture" customModuleProvider="target">
+                                <rect key="frame" x="596" y="728" width="278" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="5lq-eL-Lr4">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment width="90"/>
+                                        <segment width="90" selected="YES" tag="1"/>
+                                        <segment width="90">
+                                            <nil key="label"/>
+                                        </segment>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="changedCenterView:" target="XfG-lQ-9wD" id="AWA-WD-GnQ"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mbK-7J-xTW" userLabel="centerContainer">
+                                <rect key="frame" x="435" y="111" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="Yfx-4Z-l1H" kind="embed" id="EQJ-hv-A5g"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="QLI-ql-Oaa" firstAttribute="baseline" secondItem="6XT-er-lej" secondAttribute="baseline" id="2ob-GI-Fhq"/>
@@ -1177,15 +1199,18 @@
                             <constraint firstItem="k4M-5i-Knf" firstAttribute="centerY" secondItem="6XT-er-lej" secondAttribute="centerY" id="fB4-D1-k02"/>
                             <constraint firstItem="eo7-WG-2Fp" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="fCA-Gv-GZR"/>
                             <constraint firstAttribute="bottom" secondItem="6XT-er-lej" secondAttribute="bottom" constant="40" id="fJg-Rf-iOW"/>
+                            <constraint firstItem="IWI-HM-bdN" firstAttribute="centerX" secondItem="nZu-z6-FEM" secondAttribute="centerX" id="fm7-6G-Zy3"/>
                             <constraint firstItem="nZu-z6-FEM" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="gPM-Ni-IAX"/>
                             <constraint firstAttribute="bottom" secondItem="nZu-z6-FEM" secondAttribute="bottom" constant="100" id="iB6-5j-LzL"/>
                             <constraint firstItem="8UA-cu-MSp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="iBq-wq-rm5"/>
                             <constraint firstItem="k4M-5i-Knf" firstAttribute="leading" secondItem="8UA-cu-MSp" secondAttribute="trailing" constant="45" id="ozl-uL-akm"/>
                             <constraint firstAttribute="bottom" secondItem="eo7-WG-2Fp" secondAttribute="bottom" id="s1a-S7-MhR"/>
                             <constraint firstItem="w8y-qj-jeS" firstAttribute="leading" secondItem="6XT-er-lej" secondAttribute="trailing" constant="10" id="vuq-ok-OQ1"/>
+                            <constraint firstItem="nZu-z6-FEM" firstAttribute="top" secondItem="IWI-HM-bdN" secondAttribute="bottom" constant="8" symbolic="YES" id="wJw-aB-wU9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="centerContainer" destination="mbK-7J-xTW" id="ahE-Rj-NhE"/>
                         <outlet property="clipView" destination="7qP-Xl-3jh" id="hKf-UF-gzy"/>
                         <outlet property="collectionView" destination="uMC-z8-SoI" id="w8D-GS-VYv"/>
                         <outlet property="horizontalSlider" destination="46i-sy-4Rf" id="4ty-WW-3FW"/>
@@ -1193,6 +1218,7 @@
                         <outlet property="labelVertical" destination="8CI-gY-JQW" id="jya-M4-AGG"/>
                         <outlet property="mainView" destination="m2S-Jp-Qdl" id="rEM-jx-1UB"/>
                         <outlet property="scrollView" destination="nZu-z6-FEM" id="UlP-UW-0Jv"/>
+                        <outlet property="segmentedControl" destination="IWI-HM-bdN" id="roN-UP-7bD"/>
                         <outlet property="setGridBtn" destination="yLj-KI-4SG" id="1oe-lP-kxk"/>
                         <outlet property="verticalSLider" destination="FoV-hs-YyP" id="QHx-G7-eXq"/>
                         <outlet property="xEndPositionText" destination="xaH-Nx-8At" id="L0N-vZ-R7r"/>
@@ -1224,11 +1250,20 @@
         <!--Rig View Controller-->
         <scene sceneID="LA8-cw-3Ga">
             <objects>
-                <viewController id="Yfx-4Z-l1H" customClass="RigViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rigView" id="Yfx-4Z-l1H" customClass="RigViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ORY-UT-ZIQ" customClass="RigView" customModule="GridCapture" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lj-z5-5W6" userLabel="circleView" customClass="CircleView" customModule="GridCapture" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            </customView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="circleView" destination="0Lj-z5-5W6" id="nUD-19-8Vm"/>
+                        <outlet property="rigView" destination="ORY-UT-ZIQ" id="Gp3-xl-A68"/>
+                    </connections>
                 </viewController>
                 <customObject id="4fp-bh-pR0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1272,7 +1307,7 @@
                                     <action selector="setEnd:" target="BC7-zL-GaD" id="mLb-TR-Bdc"/>
                                 </connections>
                             </button>
-                            <button identifier="left" translatesAutoresizingMaskIntoConstraints="NO" id="Yqu-CE-wzd" userLabel="leftBtn">
+                            <button identifier="left" translatesAutoresizingMaskIntoConstraints="NO" id="Yqu-CE-wzd" userLabel="leftBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
                                 <rect key="frame" x="104" y="120" width="24" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="JiN-ka-Ewo"/>
@@ -1283,10 +1318,10 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="send:" target="BC7-zL-GaD" id="qwF-mF-k3b"/>
+                                    <action selector="left:" target="BC7-zL-GaD" id="Z2C-DN-bjX"/>
                                 </connections>
                             </button>
-                            <button identifier="stop" translatesAutoresizingMaskIntoConstraints="NO" id="PAO-U8-LsK" userLabel="stopBtn">
+                            <button identifier="stop" translatesAutoresizingMaskIntoConstraints="NO" id="PAO-U8-LsK" userLabel="stopBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
                                 <rect key="frame" x="143" y="120" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="ItH-1f-jNY"/>
@@ -1297,10 +1332,10 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="send:" target="BC7-zL-GaD" id="rAS-q1-bcB"/>
+                                    <action selector="stopBtn:" target="BC7-zL-GaD" id="W1Z-kk-THJ"/>
                                 </connections>
                             </button>
-                            <button identifier="right" translatesAutoresizingMaskIntoConstraints="NO" id="wpe-i5-VTY" userLabel="rightBtn">
+                            <button identifier="right" translatesAutoresizingMaskIntoConstraints="NO" id="wpe-i5-VTY" userLabel="rightBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
                                 <rect key="frame" x="173" y="120" width="24" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="tJa-MX-kZw"/>
@@ -1310,11 +1345,11 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="send:" target="BC7-zL-GaD" id="Qxx-oj-eI5"/>
+                                    <action selector="right:" target="BC7-zL-GaD" id="a9a-jl-zBN"/>
                                 </connections>
                             </button>
-                            <button identifier="up" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="opB-zW-hPg" userLabel="upBtn">
-                                <rect key="frame" x="-11850" y="150" width="10000" height="24"/>
+                            <button identifier="up" translatesAutoresizingMaskIntoConstraints="NO" id="opB-zW-hPg" userLabel="upBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
+                                <rect key="frame" x="-11851" y="150" width="24002" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Ed1-WN-YX5"/>
                                     <constraint firstAttribute="width" constant="24001" id="SAy-M5-hVM"/>
@@ -1325,10 +1360,10 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="send:" target="BC7-zL-GaD" id="Izy-GX-JIq"/>
+                                    <action selector="up:" target="BC7-zL-GaD" id="3aD-BF-yha"/>
                                 </connections>
                             </button>
-                            <button identifier="down" translatesAutoresizingMaskIntoConstraints="NO" id="Aw6-ZH-CM7" userLabel="downBtn">
+                            <button identifier="down" translatesAutoresizingMaskIntoConstraints="NO" id="Aw6-ZH-CM7" userLabel="downBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
                                 <rect key="frame" x="143" y="81" width="15" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="dgp-JK-mBE"/>
@@ -1339,7 +1374,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="send:" target="BC7-zL-GaD" id="tHe-Lv-bxv"/>
+                                    <action selector="send:" target="BC7-zL-GaD" id="CZb-2S-Iz9"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NNx-cb-qZd">
@@ -1384,7 +1419,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-CU-TYa" userLabel="openCloseBtn">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-CU-TYa" userLabel="openCloseBtn">
                                 <rect key="frame" x="43" y="174" width="73" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ps9-ki-FjY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1399,20 +1434,6 @@
                                     </binding>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ySV-bG-Zfq">
-                                <rect key="frame" x="148" y="181" width="134" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="eaD-Y4-pFh"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="xPos" id="9eQ-rn-bQH">
-                                    <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="BC7-zL-GaD" name="value" keyPath="self.xPosString" id="JTY-NQ-AFC"/>
-                                </connections>
-                            </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ecm-PR-KAj" userLabel="rigStatus" customClass="StatusBtn" customModule="GridCapture" customModuleProvider="target">
                                 <rect key="frame" x="270" y="251" width="10" height="10"/>
                                 <constraints>
@@ -1426,22 +1447,17 @@
                             <constraint firstItem="Aw6-ZH-CM7" firstAttribute="centerX" secondItem="P6N-eN-bXr" secondAttribute="centerX" id="7kv-TI-NXQ"/>
                             <constraint firstItem="PAO-U8-LsK" firstAttribute="leading" secondItem="Yqu-CE-wzd" secondAttribute="trailing" constant="15" id="8NA-EJ-0I3"/>
                             <constraint firstItem="pbC-qd-DQA" firstAttribute="leading" secondItem="P6N-eN-bXr" secondAttribute="leading" constant="45" id="EWZ-Z3-DoH"/>
-                            <constraint firstItem="ySV-bG-Zfq" firstAttribute="leading" secondItem="hXj-3P-d4N" secondAttribute="leading" id="Jjp-GO-ZC9"/>
                             <constraint firstAttribute="trailing" secondItem="hXj-3P-d4N" secondAttribute="trailing" constant="20" id="K7d-c0-mX8"/>
                             <constraint firstItem="NNx-cb-qZd" firstAttribute="leading" secondItem="P6N-eN-bXr" secondAttribute="leading" constant="45" id="Kud-YH-y3C"/>
-                            <constraint firstItem="ySV-bG-Zfq" firstAttribute="trailing" secondItem="hXj-3P-d4N" secondAttribute="trailing" id="O6d-rE-o0q"/>
                             <constraint firstItem="wpe-i5-VTY" firstAttribute="leading" secondItem="PAO-U8-LsK" secondAttribute="trailing" constant="15" id="Ote-jn-czZ"/>
                             <constraint firstItem="Yqu-CE-wzd" firstAttribute="centerY" secondItem="PAO-U8-LsK" secondAttribute="centerY" id="PeI-iy-zY6"/>
                             <constraint firstItem="PAO-U8-LsK" firstAttribute="centerX" secondItem="P6N-eN-bXr" secondAttribute="centerX" id="Rlj-oS-omd"/>
-                            <constraint firstItem="ySV-bG-Zfq" firstAttribute="bottom" secondItem="ikd-CU-TYa" secondAttribute="bottom" id="SjH-xs-aJk"/>
                             <constraint firstItem="Ecm-PR-KAj" firstAttribute="centerY" secondItem="NNx-cb-qZd" secondAttribute="centerY" id="XZR-Zf-EbE"/>
                             <constraint firstItem="PAO-U8-LsK" firstAttribute="top" secondItem="opB-zW-hPg" secondAttribute="bottom" constant="15" id="adw-Wv-CZj"/>
                             <constraint firstAttribute="trailing" secondItem="Ecm-PR-KAj" secondAttribute="trailing" constant="20" id="amL-BV-epp"/>
                             <constraint firstAttribute="trailing" secondItem="N9D-VD-zmD" secondAttribute="trailing" constant="45" id="av5-1c-UEu"/>
-                            <constraint firstItem="ySV-bG-Zfq" firstAttribute="leading" secondItem="ikd-CU-TYa" secondAttribute="trailing" constant="40" id="bqp-75-buQ"/>
                             <constraint firstItem="NNx-cb-qZd" firstAttribute="top" secondItem="P6N-eN-bXr" secondAttribute="top" constant="10" id="cTW-xU-CrD"/>
                             <constraint firstAttribute="bottom" secondItem="PAO-U8-LsK" secondAttribute="bottom" constant="120" id="eQs-8B-nZX"/>
-                            <constraint firstItem="opB-zW-hPg" firstAttribute="top" secondItem="ySV-bG-Zfq" secondAttribute="bottom" constant="7" id="g0a-nV-Wv8"/>
                             <constraint firstItem="Aw6-ZH-CM7" firstAttribute="top" secondItem="PAO-U8-LsK" secondAttribute="bottom" constant="15" id="itT-Yo-JGr"/>
                             <constraint firstItem="opB-zW-hPg" firstAttribute="centerX" secondItem="P6N-eN-bXr" secondAttribute="centerX" id="iwF-JC-AFf"/>
                             <constraint firstItem="0O9-ii-mss" firstAttribute="top" secondItem="NNx-cb-qZd" secondAttribute="bottom" constant="15" id="mu3-ta-Ztp"/>
@@ -1457,12 +1473,35 @@
                 <customObject id="BC7-zL-GaD" customClass="SerialCommunicationController" customModule="GridCapture" customModuleProvider="target">
                     <connections>
                         <outlet property="openCloseButton" destination="ikd-CU-TYa" id="cpD-jB-SaO"/>
-                        <outlet property="xPosLabel" destination="ySV-bG-Zfq" id="oJG-Nk-vLg"/>
+                        <outlet property="rigStatusIndicator" destination="Ecm-PR-KAj" id="mYM-1D-Frl"/>
                     </connections>
                 </customObject>
                 <userDefaultsController id="3vS-Or-Bh3"/>
             </objects>
             <point key="canvasLocation" x="-390" y="2228.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xxw-DN-ita">
+            <objects>
+                <viewController storyboardIdentifier="gridView" id="Hkq-t5-rcv" sceneMemberID="viewController">
+                    <view key="view" id="f49-3O-TWN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sID-xq-7BN">
+                                <rect key="frame" x="162" y="410" width="126" height="81"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="B" id="78s-Wk-JRc">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="20Y-7e-0Vk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="2077"/>
         </scene>
     </scenes>
     <resources>

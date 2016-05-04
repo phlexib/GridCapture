@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B534D3AE1CD8EA20009004FC /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3AD1CD8EA20009004FC /* CircleView.swift */; };
+		B534D3B01CD924A5009004FC /* JogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3AF1CD924A5009004FC /* JogButton.swift */; };
 		B541D8311CD73487002F5C44 /* RigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8301CD73487002F5C44 /* RigView.swift */; };
 		B541D8351CD7359E002F5C44 /* RigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8341CD7359E002F5C44 /* RigViewController.swift */; };
+		B541D8371CD79F04002F5C44 /* NSNotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */; };
+		B541D83F1CD7D116002F5C44 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D83E1CD7D116002F5C44 /* CustomSegmentedControl.swift */; };
 		B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32261CD65C07007AC111 /* AppDelegate.swift */; };
 		B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59C322A1CD65C07007AC111 /* GridCapture.xcdatamodeld */; };
 		B59C322E1CD65C07007AC111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59C322D1CD65C07007AC111 /* Assets.xcassets */; };
@@ -73,8 +77,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B534D3AD1CD8EA20009004FC /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B534D3AF1CD924A5009004FC /* JogButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogButton.swift; sourceTree = "<group>"; };
 		B541D8301CD73487002F5C44 /* RigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigView.swift; sourceTree = "<group>"; };
-		B541D8341CD7359E002F5C44 /* RigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RigViewController.swift; path = GridCapture/RigViewController.swift; sourceTree = "<group>"; };
+		B541D8341CD7359E002F5C44 /* RigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigViewController.swift; sourceTree = "<group>"; };
+		B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotificationCenterKeys.swift; sourceTree = "<group>"; };
+		B541D83E1CD7D116002F5C44 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B59C32231CD65C06007AC111 /* GridCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59C32261CD65C07007AC111 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59C322B1CD65C07007AC111 /* GridCapture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GridCapture.xcdatamodel; sourceTree = "<group>"; };
@@ -148,7 +156,6 @@
 		B59C321A1CD65C06007AC111 = {
 			isa = PBXGroup;
 			children = (
-				B541D8341CD7359E002F5C44 /* RigViewController.swift */,
 				B59C32251CD65C06007AC111 /* GridCapture */,
 				B59C323A1CD65C07007AC111 /* GridCaptureTests */,
 				B59C32451CD65C07007AC111 /* GridCaptureUITests */,
@@ -203,12 +210,14 @@
 		B59C32541CD65C24007AC111 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				B534D3AD1CD8EA20009004FC /* CircleView.swift */,
 				B59C32581CD65C6B007AC111 /* LeftMenu.swift */,
 				B59C32591CD65C6B007AC111 /* RightMenu.swift */,
 				B59C325A1CD65C6B007AC111 /* RoundButton.swift */,
 				B59C325B1CD65C6B007AC111 /* StatusBtn.swift */,
 				B59C325C1CD65C6B007AC111 /* StyleKit.swift */,
 				B541D8301CD73487002F5C44 /* RigView.swift */,
+				B541D83E1CD7D116002F5C44 /* CustomSegmentedControl.swift */,
 			);
 			name = Style;
 			sourceTree = "<group>";
@@ -230,6 +239,8 @@
 				B59C32641CD65C88007AC111 /* LabelCollectionViewItem.swift */,
 				B59C32651CD65C88007AC111 /* Rig.swift */,
 				B59C32661CD65C88007AC111 /* Slice.swift */,
+				B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */,
+				B534D3AF1CD924A5009004FC /* JogButton.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 		B59C32571CD65C43007AC111 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B541D8341CD7359E002F5C44 /* RigViewController.swift */,
 				B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */,
 				B59C32701CD65D05007AC111 /* ViewController.swift */,
 				B59C326E1CD65CFA007AC111 /* LabelCollectionViewItemView.swift */,
@@ -409,9 +421,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59C325F1CD65C6B007AC111 /* RoundButton.swift in Sources */,
+				B541D83F1CD7D116002F5C44 /* CustomSegmentedControl.swift in Sources */,
+				B534D3B01CD924A5009004FC /* JogButton.swift in Sources */,
 				B59C326B1CD65C88007AC111 /* Slice.swift in Sources */,
 				B59C326A1CD65C88007AC111 /* Rig.swift in Sources */,
 				B59C32611CD65C6B007AC111 /* StyleKit.swift in Sources */,
+				B541D8371CD79F04002F5C44 /* NSNotificationCenterKeys.swift in Sources */,
 				B59C32711CD65D05007AC111 /* ViewController.swift in Sources */,
 				B541D8351CD7359E002F5C44 /* RigViewController.swift in Sources */,
 				B541D8311CD73487002F5C44 /* RigView.swift in Sources */,
@@ -422,6 +437,7 @@
 				B59C32601CD65C6B007AC111 /* StatusBtn.swift in Sources */,
 				B59C325E1CD65C6B007AC111 /* RightMenu.swift in Sources */,
 				B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */,
+				B534D3AE1CD8EA20009004FC /* CircleView.swift in Sources */,
 				B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */,
 				B59C32671CD65C88007AC111 /* Grid.swift in Sources */,
 				B59C32691CD65C88007AC111 /* LabelCollectionViewItem.swift in Sources */,
