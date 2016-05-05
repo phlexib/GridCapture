@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B534D3AE1CD8EA20009004FC /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3AD1CD8EA20009004FC /* CircleView.swift */; };
 		B534D3B01CD924A5009004FC /* JogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3AF1CD924A5009004FC /* JogButton.swift */; };
+		B534D3BC1CDABFDC009004FC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3BA1CDABFDC009004FC /* ImageViewController.swift */; };
+		B534D3C11CDAC084009004FC /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3BF1CDAC084009004FC /* GridViewController.swift */; };
 		B541D8311CD73487002F5C44 /* RigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8301CD73487002F5C44 /* RigView.swift */; };
 		B541D8351CD7359E002F5C44 /* RigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8341CD7359E002F5C44 /* RigViewController.swift */; };
 		B541D8371CD79F04002F5C44 /* NSNotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */; };
@@ -79,6 +81,8 @@
 /* Begin PBXFileReference section */
 		B534D3AD1CD8EA20009004FC /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		B534D3AF1CD924A5009004FC /* JogButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogButton.swift; sourceTree = "<group>"; };
+		B534D3BA1CDABFDC009004FC /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		B534D3BF1CDAC084009004FC /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		B541D8301CD73487002F5C44 /* RigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigView.swift; sourceTree = "<group>"; };
 		B541D8341CD7359E002F5C44 /* RigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigViewController.swift; sourceTree = "<group>"; };
 		B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotificationCenterKeys.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 				B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */,
 				B59C32701CD65D05007AC111 /* ViewController.swift */,
 				B59C326E1CD65CFA007AC111 /* LabelCollectionViewItemView.swift */,
+				B534D3BA1CDABFDC009004FC /* ImageViewController.swift */,
+				B534D3BF1CDAC084009004FC /* GridViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -438,8 +444,10 @@
 				B59C325E1CD65C6B007AC111 /* RightMenu.swift in Sources */,
 				B59C322C1CD65C07007AC111 /* GridCapture.xcdatamodeld in Sources */,
 				B534D3AE1CD8EA20009004FC /* CircleView.swift in Sources */,
+				B534D3C11CDAC084009004FC /* GridViewController.swift in Sources */,
 				B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */,
 				B59C32671CD65C88007AC111 /* Grid.swift in Sources */,
+				B534D3BC1CDABFDC009004FC /* ImageViewController.swift in Sources */,
 				B59C32691CD65C88007AC111 /* LabelCollectionViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

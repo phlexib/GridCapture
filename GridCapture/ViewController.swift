@@ -115,70 +115,74 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         collectionView.maxNumberOfRows = verticalSLider.integerValue
         collectionView.setNeedsDisplayInRect(collectionView.frame)
         collectionView.reloadData()
-        
-        
         currentGrid.rows = collectionView.maxNumberOfRows
         currentGrid.columns = collectionView.maxNumberOfColumns
+        
+        let gridNotification = ["rows" : collectionView.maxNumberOfRows, "columns" : collectionView.maxNumberOfColumns]
+        NSNotificationCenter.defaultCenter().postNotificationName(keys.gridSettings, object: self, userInfo :gridNotification)
+        
         
     }
     
     @IBAction func setGrid(sender: AnyObject) {
         
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(keys.setGrid, object: self)
         print("Set Grid for current  Project")
         
         
-        currentGrid.slices=[]
-        
-        
-        
-        
-        
-        print(collectionView.numberOfItemsInSection(0))
-    
-        let col = collectionView.maxNumberOfColumns
-        let ro = collectionView.maxNumberOfRows
-        
-        
-        
-        for index in 0..<collectionView.numberOfItemsInSection(0){
-
-            let pathIndex = NSIndexPath(forItem: index, inSection: 0)
-            let collItem = (collectionView.itemAtIndexPath(pathIndex) as! LabelCollectionViewItem)
-            let sliceItem = collItem.representedObject as! Slice!
-            sliceItem.indexFrame = index+1
-            sliceItem.position = collItem.getPosition(index+1, maxRows: ro, maxColumns: col)
-            currentGrid.slices.addObject(collItem)
-            
-            
-        }
-        
-        // temp position to step conversion
-        currentGrid.startPosition = (Int(xStartPositionText.intValue), Int(yStartPositionText.intValue))
-        currentGrid.endPosition = (Int(xEndPositionText.intValue), Int(yEndPositionText.intValue))
-        let interXDistance = (currentGrid.endPosition.x - currentGrid.startPosition.x) / (currentGrid.columns-1)
-        let interYDistance = (currentGrid.endPosition.y - currentGrid.startPosition.y) / (currentGrid.rows-1)
-        
-        let firstItem = currentGrid.slices[0] as! LabelCollectionViewItem
-        firstItem.slice!.stepPosition = (currentGrid.startPosition.x,currentGrid.startPosition.y)
-        
-        
-        for i in 0..<(currentGrid.slices.count)  {
-            let theSliceItem = currentGrid.slices[i] as! LabelCollectionViewItem
-            let itemX = currentGrid.startPosition.x + (theSliceItem.slice!.position.x * interXDistance)-interXDistance
-            let itemY = currentGrid.endPosition.y - (currentGrid.startPosition.y + (theSliceItem.slice!.position.y * interYDistance)-interYDistance)
-            
-            let itemPos = (itemX,itemY)
-            
-            theSliceItem.slice!.stepPosition = itemPos
-            print(theSliceItem.slice!.stepPosition)
-        }
-        
-        let oneSLice = currentGrid.slices[0] as! LabelCollectionViewItem
-        
-        print (oneSLice.slice!.position)
-
-        //        horizontalSlider.enabled = false
-        //        verticalSLider.enabled = false
+//        currentGrid.slices=[]
+//        
+//        
+//        
+//        
+//        
+//        print(collectionView.numberOfItemsInSection(0))
+//    
+//        let col = collectionView.maxNumberOfColumns
+//        let ro = collectionView.maxNumberOfRows
+//        
+//        
+//        
+//        for index in 0..<collectionView.numberOfItemsInSection(0){
+//
+//            let pathIndex = NSIndexPath(forItem: index, inSection: 0)
+//            let collItem = (collectionView.itemAtIndexPath(pathIndex) as! LabelCollectionViewItem)
+//            let sliceItem = collItem.representedObject as! Slice!
+//            sliceItem.indexFrame = index+1
+//            sliceItem.position = collItem.getPosition(index+1, maxRows: ro, maxColumns: col)
+//            currentGrid.slices.addObject(collItem)
+//            
+//            
+//        }
+//        
+//        // temp position to step conversion
+//        currentGrid.startPosition = (Int(xStartPositionText.intValue), Int(yStartPositionText.intValue))
+//        currentGrid.endPosition = (Int(xEndPositionText.intValue), Int(yEndPositionText.intValue))
+//        let interXDistance = (currentGrid.endPosition.x - currentGrid.startPosition.x) / (currentGrid.columns-1)
+//        let interYDistance = (currentGrid.endPosition.y - currentGrid.startPosition.y) / (currentGrid.rows-1)
+//        
+//        let firstItem = currentGrid.slices[0] as! LabelCollectionViewItem
+//        firstItem.slice!.stepPosition = (currentGrid.startPosition.x,currentGrid.startPosition.y)
+//        
+//        
+//        for i in 0..<(currentGrid.slices.count)  {
+//            let theSliceItem = currentGrid.slices[i] as! LabelCollectionViewItem
+//            let itemX = currentGrid.startPosition.x + (theSliceItem.slice!.position.x * interXDistance)-interXDistance
+//            let itemY = currentGrid.endPosition.y - (currentGrid.startPosition.y + (theSliceItem.slice!.position.y * interYDistance)-interYDistance)
+//            
+//            let itemPos = (itemX,itemY)
+//            
+//            theSliceItem.slice!.stepPosition = itemPos
+//            print(theSliceItem.slice!.stepPosition)
+//        }
+//        
+//        let oneSLice = currentGrid.slices[0] as! LabelCollectionViewItem
+//        
+//        print (oneSLice.slice!.position)
+//
+//        //        horizontalSlider.enabled = false
+//        //        verticalSLider.enabled = false
     }
     
     

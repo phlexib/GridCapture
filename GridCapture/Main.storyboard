@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="10116"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -692,7 +693,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView wantsLayer="YES" selectable="YES" id="uMC-z8-SoI">
-                                            <rect key="frame" x="0.0" y="3" width="240" height="1092"/>
+                                            <rect key="frame" x="0.0" y="3" width="224" height="1092"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewGridLayout key="collectionViewLayout" id="VYA-jJ-L3H"/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1160,38 +1161,25 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IWI-HM-bdN" customClass="CustomSegmentedControl" customModule="GridCapture" customModuleProvider="target">
-                                <rect key="frame" x="596" y="728" width="278" height="24"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="5lq-eL-Lr4">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment width="90"/>
-                                        <segment width="90" selected="YES" tag="1"/>
-                                        <segment width="90">
-                                            <nil key="label"/>
-                                        </segment>
-                                    </segments>
-                                </segmentedCell>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="mbK-7J-xTW" userLabel="centerContainer">
+                                <rect key="frame" x="300" y="100" width="870" height="650"/>
                                 <connections>
-                                    <action selector="changedCenterView:" target="XfG-lQ-9wD" id="AWA-WD-GnQ"/>
-                                </connections>
-                            </segmentedControl>
-                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mbK-7J-xTW" userLabel="centerContainer">
-                                <rect key="frame" x="435" y="111" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="Yfx-4Z-l1H" kind="embed" id="EQJ-hv-A5g"/>
+                                    <segue destination="LIN-h6-cWr" kind="embed" id="bbO-Ll-Yjk"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="QLI-ql-Oaa" firstAttribute="baseline" secondItem="6XT-er-lej" secondAttribute="baseline" id="2ob-GI-Fhq"/>
                             <constraint firstItem="6XT-er-lej" firstAttribute="leading" secondItem="QLI-ql-Oaa" secondAttribute="trailing" constant="10" id="3CW-La-UM5"/>
+                            <constraint firstItem="mbK-7J-xTW" firstAttribute="bottom" secondItem="nZu-z6-FEM" secondAttribute="bottom" id="3uV-DP-4if"/>
+                            <constraint firstItem="mbK-7J-xTW" firstAttribute="trailing" secondItem="nZu-z6-FEM" secondAttribute="trailing" id="5Mi-ga-qzF"/>
                             <constraint firstItem="eo7-WG-2Fp" firstAttribute="leading" secondItem="7qP-Xl-3jh" secondAttribute="trailing" id="7Z2-yu-C48"/>
                             <constraint firstItem="w8y-qj-jeS" firstAttribute="baseline" secondItem="6XT-er-lej" secondAttribute="baseline" id="9Xo-bP-CNG"/>
                             <constraint firstItem="8UA-cu-MSp" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="AXp-ZC-Qlw"/>
                             <constraint firstItem="6XT-er-lej" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="D8P-T5-9i5"/>
                             <constraint firstItem="nZu-z6-FEM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="300" id="EsZ-T3-EDc"/>
                             <constraint firstItem="8UA-cu-MSp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="H4C-Cg-eju"/>
+                            <constraint firstItem="mbK-7J-xTW" firstAttribute="leading" secondItem="nZu-z6-FEM" secondAttribute="leading" id="I5y-MS-opr"/>
                             <constraint firstAttribute="trailing" secondItem="eo7-WG-2Fp" secondAttribute="trailing" id="XEr-D1-H87"/>
                             <constraint firstItem="nZu-z6-FEM" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="78" id="ZIh-Py-SKo"/>
                             <constraint firstAttribute="bottom" secondItem="8UA-cu-MSp" secondAttribute="bottom" id="cl3-WD-Dar"/>
@@ -1199,14 +1187,13 @@
                             <constraint firstItem="k4M-5i-Knf" firstAttribute="centerY" secondItem="6XT-er-lej" secondAttribute="centerY" id="fB4-D1-k02"/>
                             <constraint firstItem="eo7-WG-2Fp" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="fCA-Gv-GZR"/>
                             <constraint firstAttribute="bottom" secondItem="6XT-er-lej" secondAttribute="bottom" constant="40" id="fJg-Rf-iOW"/>
-                            <constraint firstItem="IWI-HM-bdN" firstAttribute="centerX" secondItem="nZu-z6-FEM" secondAttribute="centerX" id="fm7-6G-Zy3"/>
                             <constraint firstItem="nZu-z6-FEM" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="gPM-Ni-IAX"/>
                             <constraint firstAttribute="bottom" secondItem="nZu-z6-FEM" secondAttribute="bottom" constant="100" id="iB6-5j-LzL"/>
                             <constraint firstItem="8UA-cu-MSp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="iBq-wq-rm5"/>
                             <constraint firstItem="k4M-5i-Knf" firstAttribute="leading" secondItem="8UA-cu-MSp" secondAttribute="trailing" constant="45" id="ozl-uL-akm"/>
                             <constraint firstAttribute="bottom" secondItem="eo7-WG-2Fp" secondAttribute="bottom" id="s1a-S7-MhR"/>
                             <constraint firstItem="w8y-qj-jeS" firstAttribute="leading" secondItem="6XT-er-lej" secondAttribute="trailing" constant="10" id="vuq-ok-OQ1"/>
-                            <constraint firstItem="nZu-z6-FEM" firstAttribute="top" secondItem="IWI-HM-bdN" secondAttribute="bottom" constant="8" symbolic="YES" id="wJw-aB-wU9"/>
+                            <constraint firstItem="mbK-7J-xTW" firstAttribute="top" secondItem="nZu-z6-FEM" secondAttribute="top" constant="-28" id="zjm-Xj-QEI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1218,7 +1205,6 @@
                         <outlet property="labelVertical" destination="8CI-gY-JQW" id="jya-M4-AGG"/>
                         <outlet property="mainView" destination="m2S-Jp-Qdl" id="rEM-jx-1UB"/>
                         <outlet property="scrollView" destination="nZu-z6-FEM" id="UlP-UW-0Jv"/>
-                        <outlet property="segmentedControl" destination="IWI-HM-bdN" id="roN-UP-7bD"/>
                         <outlet property="setGridBtn" destination="yLj-KI-4SG" id="1oe-lP-kxk"/>
                         <outlet property="verticalSLider" destination="FoV-hs-YyP" id="QHx-G7-eXq"/>
                         <outlet property="xEndPositionText" destination="xaH-Nx-8At" id="L0N-vZ-R7r"/>
@@ -1247,10 +1233,35 @@
             </objects>
             <point key="canvasLocation" x="226" y="1509"/>
         </scene>
-        <!--Rig View Controller-->
+        <!--Tab View Controller-->
+        <scene sceneID="k56-bE-mn7">
+            <objects>
+                <tabViewController id="LIN-h6-cWr" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem id="UTe-fs-cgP"/>
+                        <tabViewItem id="YwA-gu-t0n"/>
+                        <tabViewItem id="EP3-Ge-zQJ"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="cOT-9Y-t9Y">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
+                    <connections>
+                        <segue destination="Yfx-4Z-l1H" kind="relationship" relationship="tabItems" id="WZf-16-BvE"/>
+                        <segue destination="Hkq-t5-rcv" kind="relationship" relationship="tabItems" id="W3k-hK-0I0"/>
+                        <segue destination="dRU-9C-hu8" kind="relationship" relationship="tabItems" id="AS8-m3-ylW"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="h0i-Nh-jsa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="869"/>
+        </scene>
+        <!--Rig-->
         <scene sceneID="LA8-cw-3Ga">
             <objects>
-                <viewController storyboardIdentifier="rigView" id="Yfx-4Z-l1H" customClass="RigViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Rig" storyboardIdentifier="rigView" id="Yfx-4Z-l1H" customClass="RigViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ORY-UT-ZIQ" customClass="RigView" customModule="GridCapture" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1267,12 +1278,12 @@
                 </viewController>
                 <customObject id="4fp-bh-pR0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="1397"/>
+            <point key="canvasLocation" x="2209" y="869"/>
         </scene>
-        <!--View Controller-->
+        <!--Serial Comm-->
         <scene sceneID="4Hk-Mu-bei">
             <objects>
-                <viewController id="aQl-Lz-OqB" sceneMemberID="viewController">
+                <viewController title="Serial Comm" id="aQl-Lz-OqB" sceneMemberID="viewController">
                     <view key="view" id="P6N-eN-bXr">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="281"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1344,12 +1355,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="right:" target="BC7-zL-GaD" id="a9a-jl-zBN"/>
-                                </connections>
                             </button>
-                            <button identifier="up" translatesAutoresizingMaskIntoConstraints="NO" id="opB-zW-hPg" userLabel="upBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
-                                <rect key="frame" x="-11851" y="150" width="24002" height="24"/>
+                            <button identifier="up" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="opB-zW-hPg" userLabel="upBtn" customClass="JogButton" customModule="GridCapture" customModuleProvider="target">
+                                <rect key="frame" x="-11851" y="150" width="10000" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Ed1-WN-YX5"/>
                                     <constraint firstAttribute="width" constant="24001" id="SAy-M5-hVM"/>
@@ -1480,28 +1488,98 @@
             </objects>
             <point key="canvasLocation" x="-390" y="2228.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Grid-->
         <scene sceneID="xxw-DN-ita">
             <objects>
-                <viewController storyboardIdentifier="gridView" id="Hkq-t5-rcv" sceneMemberID="viewController">
-                    <view key="view" id="f49-3O-TWN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                <viewController title="Grid" storyboardIdentifier="gridView" id="Hkq-t5-rcv" customClass="GridViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="FMl-pu-awC" userLabel="MainView">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sID-xq-7BN">
-                                <rect key="frame" x="162" y="410" width="126" height="81"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="B" id="78s-Wk-JRc">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRF-0P-fcE" userLabel="scrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Sff-hu-kfs">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView wantsLayer="YES" selectable="YES" id="NZ3-xb-gZR">
+                                            <rect key="frame" x="0.0" y="3" width="0.0" height="770"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewGridLayout key="collectionViewLayout" id="7Bi-JW-ySP"/>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="urA-MC-c1j" name="content" keyPath="arrangedObjects" id="QGa-Ab-ZDt"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.27722928489720289" horizontal="YES" id="xeB-S9-UWf">
+                                    <rect key="frame" x="1" y="285" width="0.0" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="eTK-Wc-YwG">
+                                    <rect key="frame" x="433" y="1" width="16" height="298"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
-                    </view>
+                        <constraints>
+                            <constraint firstItem="KRF-0P-fcE" firstAttribute="leading" secondItem="FMl-pu-awC" secondAttribute="leading" id="0wC-m0-TgO"/>
+                            <constraint firstAttribute="bottom" secondItem="KRF-0P-fcE" secondAttribute="bottom" id="DNv-EI-rEh"/>
+                            <constraint firstAttribute="trailing" secondItem="KRF-0P-fcE" secondAttribute="trailing" id="QuJ-hn-LjT"/>
+                            <constraint firstItem="KRF-0P-fcE" firstAttribute="top" secondItem="FMl-pu-awC" secondAttribute="top" id="dYI-vs-bk4"/>
+                        </constraints>
+                    </customView>
+                    <connections>
+                        <outlet property="clipView" destination="Sff-hu-kfs" id="PdW-FI-dDf"/>
+                        <outlet property="collectionView" destination="NZ3-xb-gZR" id="BaG-QM-yI4"/>
+                        <outlet property="mainView" destination="FMl-pu-awC" id="oDc-Uw-XUQ"/>
+                        <outlet property="scrollView" destination="KRF-0P-fcE" id="uzR-sM-zoF"/>
+                    </connections>
                 </viewController>
+                <userDefaultsController id="luE-Kd-NAP"/>
+                <customObject id="QfH-Ym-RBt" customClass="GridController" customModule="GridCapture" customModuleProvider="target">
+                    <connections>
+                        <outlet property="arrayController" destination="lMV-0B-cUw" id="Ugr-4t-9At"/>
+                    </connections>
+                </customObject>
+                <arrayController objectClassName="Slice" id="lMV-0B-cUw">
+                    <declaredKeys>
+                        <string>indexFrame</string>
+                    </declaredKeys>
+                    <connections>
+                        <binding destination="QfH-Ym-RBt" name="contentArray" keyPath="slices" id="1sy-Ab-VPv"/>
+                    </connections>
+                </arrayController>
                 <customObject id="20Y-7e-0Vk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="2077"/>
+            <point key="canvasLocation" x="2209" y="1636"/>
+        </scene>
+        <!--Image-->
+        <scene sceneID="bL3-ST-L8z">
+            <objects>
+                <viewController title="Image" id="dRU-9C-hu8" sceneMemberID="viewController">
+                    <view key="view" id="De4-fK-VLS">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <ikImageView wantsLayer="YES" zoomFactor="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="lWy-RY-giH">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <color key="backgroundColor" red="0.50002289" green="0.50002289" blue="0.50002289" alpha="1" colorSpace="deviceRGB"/>
+                            </ikImageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lWy-RY-giH" secondAttribute="trailing" id="Ji7-8W-NXa"/>
+                            <constraint firstAttribute="bottom" secondItem="lWy-RY-giH" secondAttribute="bottom" id="XAt-7J-20Z"/>
+                            <constraint firstItem="lWy-RY-giH" firstAttribute="top" secondItem="De4-fK-VLS" secondAttribute="top" id="hzx-dV-3jb"/>
+                            <constraint firstItem="lWy-RY-giH" firstAttribute="leading" secondItem="De4-fK-VLS" secondAttribute="leading" id="pc8-0l-NQp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="l0G-Ij-E42" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2198" y="2179"/>
         </scene>
     </scenes>
     <resources>

@@ -19,7 +19,8 @@ class NSNotificationCenterKeys: NSObject {
     let frameKey = "frameKey"
     let rigIsConnected = "rigIsConnected"
     let rigIsDisconnected = "rigIsDisconnected"
-    
+    let gridSettings = "gridSettings"
+    let setGrid = "setGrid"
     
     func parseData(incomeString : String)-> (Int,Int){
 
