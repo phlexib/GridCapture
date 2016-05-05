@@ -164,12 +164,15 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         }
     }
     // MARK: - RUNTIME
-
+    override func awakeFromNib() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SerialCommunicationController.moveToPosition), name: keys.moveTo, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SerialCommunicationController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+        
     }
     
        
@@ -223,6 +226,27 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
 
     }
 
+    func moveToPosition(notification : NSNotification){
+        print("moveToPosition call")
+        
+        guard let userInfo = notification.userInfo,
+            let targetString  = userInfo["moveTo"] as? String
+            else {
+                print("No userInfo found in notification")
+                return
+        }
+        
+        
+        let toArray = targetString.componentsSeparatedByString(" ")
+        var cleanString = toArray.joinWithSeparator("")
+        
+        cleanString += "\n"
+        print("target set to : \(cleanString)")
+        if let data = cleanString.dataUsingEncoding(NSUTF8StringEncoding) {
+            self.serialPort?.sendData(data)
+            
+        }
+    }
     
     // MARK: - NSUserNotifcationCenterDelegate
     

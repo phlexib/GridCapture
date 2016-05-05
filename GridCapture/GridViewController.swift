@@ -85,7 +85,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.setGrid), name: keys.setGrid, object: nil)
     }
     
@@ -135,7 +135,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         
         // temp position to step conversion
         currentGrid.startPosition = (0,0)
-        currentGrid.endPosition = (1000,1000)
+        currentGrid.endPosition = (75000,75000)
         currentGrid.rows = collectionView.maxNumberOfRows
         currentGrid.columns = collectionView.maxNumberOfColumns
         

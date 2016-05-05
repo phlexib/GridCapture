@@ -19,11 +19,12 @@ class RigViewController: NSViewController {
         super.viewDidLoad()
         circleView.frame.origin = CGPointMake(0, 0)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
     }
     
     
-    override func awakeFromNib() {
+    override func viewWillAppear() {
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
         
     }
     

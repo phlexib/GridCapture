@@ -6,11 +6,11 @@ import AppKit
 
 
 class LabelCollectionViewItem: NSCollectionViewItem {
-	
+	let keys = NSNotificationCenterKeys()
     let tookColor = StyleKit.on
     let currentColor = StyleKit.standbye
     let emptyColor = StyleKit.oval15Copy3
-    
+    let serialComm = SerialCommunicationController()
     
 	// MARK: properties
 	
@@ -57,7 +57,15 @@ class LabelCollectionViewItem: NSCollectionViewItem {
         slice!.status = .current
         self.view.layer?.backgroundColor = slice!.itemColor.CGColor
         print ("GO TO POSITION\(slice!.stepPosition)")
+        
+        let xString = String(slice!.stepPosition.x)
+        let yString = String(slice!.stepPosition.y)
+        let string = xString+","+yString
+        let moveToInfo = ["moveTo" : string]
+        NSNotificationCenter.defaultCenter().postNotificationName(keys.moveTo, object: self, userInfo: moveToInfo)
             }
+    
+    
     @IBAction func takePicture(sender: AnyObject) {
         slice!.status = .took
         self.view.layer?.backgroundColor = slice!.itemColor.CGColor

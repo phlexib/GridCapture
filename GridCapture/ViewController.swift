@@ -12,8 +12,8 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     
     // MARK: VARIABLES
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
-    
-   
+    let moveProgress = NSProgress()
+    let pictureProgress = NSProgress()
     var rig : Rig = Rig()
     var currentGrid : GridController = GridController()
     var slices : NSMutableArray = NSMutableArray()
@@ -23,8 +23,10 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     var columns : NSNumber = 5
     
     var xPosition: Int = 1
-       
     var yPosition: Int = 1
+    var currentPosition = (x:0,y:0)
+    var targetPosition = (x:0,y:0)
+    
     var stringXPosition : String{
         get{
             let xString = "Current X Position : "
@@ -48,7 +50,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     @IBOutlet weak var scrollView: NSView!
     @IBOutlet weak var clipView: NSView!
     @IBOutlet weak var centerContainer: NSView!
-    @IBOutlet weak var segmentedControl: NSSegmentedControl!
+    @IBOutlet weak var moveProgressWheel: NSProgressIndicator!
     
 	@IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var horizontalSlider: NSSlider!
@@ -70,7 +72,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
-        
+       
         // create default Rig
         
         rig = Rig(motorStepsRevolution: 200, rigMmWidth: 1500, rigMmHeight: 1500, circomference: 8, microStep: 2)
@@ -95,10 +97,12 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         collectionView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
 	
        
+        targetPosition = (0,0)
         xPositionLabel.stringValue = stringXPosition
         yPositionLabel.stringValue = stringYPosition
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.moveToPosition), name: keys.moveTo, object: nil)
     }
     
     
@@ -145,8 +149,53 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
                 print("No userInfo found in notification")
                 return
         }
-        xPositionLabel.stringValue = String(xInfo)
-        yPositionLabel.stringValue = String(yInfo)
+        let startPosition = currentPosition
+        currentPosition.x = xInfo as! Int
+        currentPosition.y = yInfo as! Int
+        xPositionLabel.stringValue = String(currentPosition.x)
+        yPositionLabel.stringValue = String(currentPosition.y)
+        
+        
+        let xDestinationPosition = targetPosition.x
+        let yDestinationPosition = targetPosition.x
+        
+        let xDistance = xDestinationPosition - startPosition.x
+        let tempX =  currentPosition.x - startPosition.x
+        
+        let yDistance = yDestinationPosition - startPosition.y
+        let tempY =  currentPosition.y - startPosition.y
+        
+//        let xCurrentPosition = xInfo as! Int
+        let xMoveProgress = NSProgress(totalUnitCount: Int64(xDistance))
+        xMoveProgress.completedUnitCount = Int64(tempX)
+        let yMoveProgress = NSProgress(totalUnitCount: Int64(tempY))
+        yMoveProgress.completedUnitCount = Int64(tempY)
+        
+        
+        moveProgress.totalUnitCount = Int64(xDestinationPosition)
+        moveProgress.completedUnitCount = Int64(currentPosition.x)
+        moveProgress.addChild(yMoveProgress, withPendingUnitCount: 50)
+        xPositionLabel.stringValue = moveProgress.localizedDescription
+        
+        
+        moveProgressWheel.doubleValue = moveProgress.fractionCompleted*100
+        
+    }
+    
+    func moveToPosition(notification : NSNotification){
+       
+        
+        guard let userInfo = notification.userInfo,
+            let targetString  = userInfo["moveTo"] as? String
+            else {
+                print("No userInfo found in notification")
+                return
+        }
+        let xTarget = Int(targetString.componentsSeparatedByString(",")[0])
+        let yTarget = Int(targetString.componentsSeparatedByString(",")[1])
+        targetPosition.x = xTarget!
+        targetPosition.y = yTarget!
+
     }
     
     //MARK: NSCollectionViewDelegate
@@ -170,24 +219,6 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         item.view.layer?.backgroundColor = StyleKit.oval15Copy3.CGColor
 		return item
 	}
-    
-    func addSubview(subView:NSView, toView parentView:NSView) {
-        parentView.addSubview(subView)
-        
-        var viewBindingsDict = [String: AnyObject]()
-        viewBindingsDict["subView"] = subView
-        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-    }
-    
-    func cycleFromViewController(oldViewController: NSViewController, toViewController newViewController: NSViewController) {
-      
-        oldViewController.removeFromParentViewController()
-        self.addChildViewController(newViewController)
-        self.addSubview(newViewController.view, toView:self.centerContainer!)
- 
-    }
 }
+
 
