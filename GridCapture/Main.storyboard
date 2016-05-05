@@ -693,7 +693,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView wantsLayer="YES" selectable="YES" id="uMC-z8-SoI">
-                                            <rect key="frame" x="0.0" y="3" width="224" height="1092"/>
+                                            <rect key="frame" x="0.0" y="3" width="220" height="1092"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewGridLayout key="collectionViewLayout" id="VYA-jJ-L3H"/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1518,7 +1518,7 @@
                                     <rect key="frame" x="1" y="285" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="eTK-Wc-YwG">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="eTK-Wc-YwG">
                                     <rect key="frame" x="433" y="1" width="16" height="298"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1579,7 +1579,7 @@
                 </viewController>
                 <customObject id="l0G-Ij-E42" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2198" y="2179"/>
+            <point key="canvasLocation" x="2209" y="2034"/>
         </scene>
     </scenes>
     <resources>

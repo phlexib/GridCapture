@@ -107,11 +107,6 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         currentGrid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
         collectionView.reloadData()
         
-        testLabelNotification.stringValue = "rows = \(rows) + columns = \(columns)"
-
-        print("Set Grid for current  Project")
-        print ("rows = \(rows)")
-        print ("columns = \(columns)")
     }
     
     
@@ -119,17 +114,12 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
 
     func setGrid(notification:NSNotification) {
     
+                currentGrid.slices=[]
         
-        currentGrid.slices=[]
+        collectionView.maxNumberOfRows = Int(rows)
+        collectionView.maxNumberOfColumns = Int(columns)
         
-       
-        print(collectionView.numberOfItemsInSection(0))
-        
-        let col = collectionView.maxNumberOfColumns
-        let ro = collectionView.maxNumberOfRows
-        
-        print(collectionView.numberOfItemsInSection(0))
-        
+
         
         for index in 0..<collectionView.numberOfItemsInSection(0){
             
@@ -137,20 +127,21 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             let collItem = (collectionView.itemAtIndexPath(pathIndex) as! LabelCollectionViewItem)
             let sliceItem = collItem.representedObject as! Slice!
             sliceItem.indexFrame = index+1
-            sliceItem.position = collItem.getPosition(index+1, maxRows: ro, maxColumns: col)
+            sliceItem.position = collItem.getPosition(index+1, maxRows: collectionView.maxNumberOfRows, maxColumns: collectionView.maxNumberOfColumns)
             currentGrid.slices.addObject(collItem)
-            
+           
             
         }
         
         // temp position to step conversion
-//        currentGrid.startPosition = (Int(xStartPositionText.intValue), Int(yStartPositionText.intValue))
-//        currentGrid.endPosition = (Int(xEndPositionText.intValue), Int(yEndPositionText.intValue))
         currentGrid.startPosition = (0,0)
-        currentGrid.endPosition = (75000,75000)
+        currentGrid.endPosition = (1000,1000)
+        currentGrid.rows = collectionView.maxNumberOfRows
+        currentGrid.columns = collectionView.maxNumberOfColumns
         
         let interXDistance = (currentGrid.endPosition.x - currentGrid.startPosition.x) / (currentGrid.columns-1)
         let interYDistance = (currentGrid.endPosition.y - currentGrid.startPosition.y) / (currentGrid.rows-1)
+        
         
         let firstItem = currentGrid.slices[0] as! LabelCollectionViewItem
         firstItem.slice!.stepPosition = (currentGrid.startPosition.x,currentGrid.startPosition.y)
@@ -167,9 +158,8 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             print(theSliceItem.slice!.stepPosition)
         }
         
-        let oneSLice = currentGrid.slices[0] as! LabelCollectionViewItem
+       
         
-        print (oneSLice.slice!.position)
         
         //        horizontalSlider.enabled = false
         //        verticalSLider.enabled = false

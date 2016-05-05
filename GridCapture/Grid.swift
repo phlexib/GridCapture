@@ -13,7 +13,8 @@ class Grid: NSObject {
     var name: String
     var columns : NSNumber
     var rows : NSNumber
-    //var totalOfSlices : NSNumber
+    
+    
     var sliceArray : NSMutableArray = NSMutableArray()
     
     var totalOfSlices : NSNumber {
