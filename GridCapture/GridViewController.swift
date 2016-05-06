@@ -10,21 +10,17 @@ import Cocoa
 
 class GridViewController: NSViewController, NSCollectionViewDataSource {
 
+    
     // MARK: VARIABLES
+    
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
-    
-    @IBOutlet weak var testLabelNotification: NSTextField!
-    
     var rig : Rig = Rig()
     var currentGrid : GridController = GridController()
     var slices : NSMutableArray = NSMutableArray()
     var currentFrameIndex = 0
-    
     var rows : NSNumber = 5
     var columns : NSNumber = 5
-    
     var xPosition: Int = 1
-    
     var yPosition: Int = 1
     var stringXPosition : String{
         get{
@@ -39,22 +35,22 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             return yString + String(yPosition)
         }
     }
-    
-    enum TabIndex : Int {
-        case FirstChildTab = 0
-        case SecondChildTab = 1
-    }
+
+    // MARK: IBOUTLETS
     
     @IBOutlet weak var mainView: NSView!
     @IBOutlet weak var scrollView: NSView!
     @IBOutlet weak var clipView: NSView!
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var testLabelNotification: NSTextField!
+
     
+    // MARK : Runtime
     
     override func viewWillAppear() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.receiveGridInfo), name: keys.gridSettings, object: nil)
     }
-    // MARK : Runtime
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,14 +78,14 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         currentGrid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
         collectionView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
         
-        
-        
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.setGrid), name: keys.setGrid, object: nil)
     }
     
+    // MARK: NOTIFICATION
     
+    
+    // Ge Grid Info
     func receiveGridInfo(notification : NSNotification){
         guard let userInfo = notification.userInfo,
             let ro  = userInfo["rows"] as? Int,
@@ -101,7 +97,6 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         
         rows = ro
         columns = col
-        
         collectionView.maxNumberOfColumns = Int(columns)
         collectionView.maxNumberOfRows = Int(rows)
         currentGrid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
@@ -110,16 +105,18 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
     }
     
     
-    //MARK: IBActions
+    //MARK: CUSTOM FUNCTIONS
 
     func setGrid(notification:NSNotification) {
     
-                currentGrid.slices=[]
-        
+        // reinit Grid Instance
+        currentGrid.slices=[]
+
+        // set up collectionView
         collectionView.maxNumberOfRows = Int(rows)
         collectionView.maxNumberOfColumns = Int(columns)
         
-
+        // Assign new Slices in Grid array
         
         for index in 0..<collectionView.numberOfItemsInSection(0){
             
@@ -133,7 +130,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             
         }
         
-        // temp position to step conversion
+        // Convert UI Grid to Steps
         currentGrid.startPosition = (0,0)
         currentGrid.endPosition = (75000,75000)
         currentGrid.rows = collectionView.maxNumberOfRows
@@ -142,11 +139,11 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         let interXDistance = (currentGrid.endPosition.x - currentGrid.startPosition.x) / (currentGrid.columns-1)
         let interYDistance = (currentGrid.endPosition.y - currentGrid.startPosition.y) / (currentGrid.rows-1)
         
-        
         let firstItem = currentGrid.slices[0] as! LabelCollectionViewItem
         firstItem.slice!.stepPosition = (currentGrid.startPosition.x,currentGrid.startPosition.y)
         
         
+        // Assign each Step Position to Slices
         for i in 0..<(currentGrid.slices.count)  {
             let theSliceItem = currentGrid.slices[i] as! LabelCollectionViewItem
             let itemX = currentGrid.startPosition.x + (theSliceItem.slice!.position.x * interXDistance)-interXDistance
@@ -155,24 +152,12 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             let itemPos = (itemX,itemY)
             
             theSliceItem.slice!.stepPosition = itemPos
-            print(theSliceItem.slice!.stepPosition)
         }
-        
-       
-        
         
         //        horizontalSlider.enabled = false
         //        verticalSLider.enabled = false
     }
-    
-    
-    
-    // MARK : NSNOTIFICATIONCENTER
-    
-        
-    //MARK: NSCollectionViewDelegate
-    
-    
+          
     
     //MARK: NSCollectionViewDataSource
     

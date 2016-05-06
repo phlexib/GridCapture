@@ -9,25 +9,33 @@
 import Cocoa
 
 class RigViewController: NSViewController {
+    
+    // MARK: - VARIABLES
+    
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
+    
+    
+    // MARK: - IBOUTLETS
     
     @IBOutlet var rigView: RigView!
     @IBOutlet weak var circleView: NSView!
    
     
+    
+    // MARK: - RUNTIME
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         circleView.frame.origin = CGPointMake(0, 0)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
     }
-    
     
     override func viewWillAppear() {
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
-        
     }
     
+    
+    
+    //MARK: NOTIFICATIONS
     
     func updateCameraPosition(notification:NSNotification){
         

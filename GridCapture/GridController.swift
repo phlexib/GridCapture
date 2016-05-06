@@ -10,12 +10,13 @@ import Cocoa
 
 class GridController: NSObject {
 
+    
+    // MARK :PROPERTIES
     var slices : NSMutableArray = NSMutableArray()
     var columns : Int = 5
     var rows : Int = 5
     var startPosition = (x:0 , y:0)
     var endPosition = (x:0,y:0)
-    
     var totalOfSlices : NSNumber {
         get{
             return (Int(rows) * Int(columns))
@@ -27,13 +28,15 @@ class GridController: NSObject {
 
     @IBOutlet weak var arrayController : NSArrayController!
     
+   
+    // MARK: RUNTIME
     
     override func awakeFromNib() {
         
         for index in 1...10{
-            let newImage : NSImage = NSImage(named: "gina")!
+            // Optionnal Image to implement
+//            let newImage : NSImage = NSImage(named: "gina")!
             let newSlice = Slice(indexFrame: index)
-            
             self.slices.addObject(newSlice)
         }
         

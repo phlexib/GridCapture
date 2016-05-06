@@ -5,8 +5,8 @@ import AppKit
 
 class LabelCollectionViewItemView: NSView {
 
-	// MARK: properties
-	
+    
+	// MARK: VARIABLES
     
 	var selected: Bool = false {
 		didSet {
@@ -16,6 +16,7 @@ class LabelCollectionViewItemView: NSView {
         
 		}
 	}
+    
 	var highlightState: NSCollectionViewItemHighlightState = .None {
 		
         didSet {
@@ -26,25 +27,19 @@ class LabelCollectionViewItemView: NSView {
 		}
 	}
 	
+    
+    // MARK: IBOUTLETS
+    
     @IBOutlet weak var cellContextMenu: NSMenu!
     @IBOutlet weak var goToFrameBtn: NSMenuItem!
     @IBOutlet weak var takePictureBtn: NSMenuItem!
     @IBOutlet weak var resetFrameBtn: NSMenuItem!
 	
     
-    // NS MENU ACIONS
-
-
+    // MARK: Update View Methods
+	
     
-    
-    
-    
-    // MARK: NSView
-    
-   
-    
-
-	override var wantsUpdateLayer: Bool {
+    override var wantsUpdateLayer: Bool {
 		return true
 	}
 
@@ -59,12 +54,12 @@ class LabelCollectionViewItemView: NSView {
             self.layer?.borderColor = StyleKit.separator.CGColor
             self.layer?.borderWidth = 0.5
            		}
-        
-		
 	}
+    
+    
 
 	// MARK: init
-
+    
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		wantsLayer = true

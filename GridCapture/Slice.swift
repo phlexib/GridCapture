@@ -11,15 +11,19 @@ import AppKit
 
 class Slice: NSObject {
     
+    
+    // MARK : CLASS PROPERTIES
     enum options {
         case empty
         case current
         case took
     }
     
-    let tookColor = StyleKit.on
-    let currentColor = StyleKit.standbye
-    let emptyColor = StyleKit.oval15Copy3
+    var position = (x:0,y:0)
+    var stepPosition = (x:0,y:0)
+    var tookColor = StyleKit.on
+    var currentColor = StyleKit.standbye
+    var emptyColor = StyleKit.oval15Copy3
     var indexFrame : Int
     var status : options
     var itemColor : NSColor{
@@ -34,26 +38,25 @@ class Slice: NSObject {
             }
         }
     }
-    var position = (x:0,y:0)
-    var stepPosition = (x:0,y:0)
     
-   
+    
+    // MARK: INIT
     
     init(indexFrame:Int) {
         
         self.indexFrame = indexFrame
         self.status = .empty
-        //self.itemColor = self.emptyColor
-        
     }
     
     
+    // MARK: CLASS FUNCTIONS
+    
+    // use Status to change color
     func switchColor(){
         switch status{
             case .empty:  self.itemColor = emptyColor
             case .current:   self.itemColor = currentColor
             case .took:   self.itemColor = tookColor
-       
         }
     }
     

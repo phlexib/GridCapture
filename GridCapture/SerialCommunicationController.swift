@@ -11,22 +11,18 @@ import ORSSerial
 
 class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NSUserNotificationCenterDelegate {
     
-    let keys = NSNotificationCenterKeys()
+    
+    // MARK: - VARIABLES
+    
+    let keys = NSNotificationCenterKeys() // Keys for Notifications
     var currentIncomingString = NSString()
     var stringReceived = NSString()
+   
     
-    enum dataString : String{
-        case Down = "d"
-        case Up = "u"
-        case Left = "l"
-        case Right = "r"
-        case Stop = "s"
-    }
-    
+    // OrsSerial Variables
     let serialPortManager = ORSSerialPortManager.sharedSerialPortManager()
     let availableBaudRates = [300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400]
     var shouldAddLineEnding = false
-    var xPosString : NSString = NSString()
     
     var serialPort: ORSSerialPort? {
         didSet {
@@ -37,18 +33,20 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     }
 
     
+    //  MARK: - IBOUTLETS
     
     @IBOutlet weak var openCloseButton: NSButton!
     @IBOutlet weak var rigStatusIndicator : StatusBtn!
     
-    // MARK: - Actions
     
     
+    // MARK: - ACTIONS
+    
+    // Send data from Buttons
     @IBAction func send(sender : AnyObject) {
         
         sender.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
-        
-        
+
         var string = "test"
         let btnId = (sender as! NSButton).identifier!
         switch btnId{
@@ -77,48 +75,35 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         }
     }
     
+    // Stop Action Interface
+    @IBAction func stopBtn(sender: AnyObject){
+        stop()
+    }
+
+    
+    // Set StartPoint of Grid
     @IBAction func setStart(sender: AnyObject) {
         
         let string = "x"
         if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
             self.serialPort?.sendData(data)
-            
         }
     }
     
     
+    // Set EndPoint Of Grid
     @IBAction func setEnd(sender: AnyObject) {
+        
         let string = "y"
         if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
             self.serialPort?.sendData(data)
         }
     }
     
-    @IBAction func up(sender: AnyObject) {
-        
-        sender.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
-        
-        let string = "u"
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            self.serialPort?.sendData(data)
-        }
-    }
     
-//    @IBAction func right(sender: AnyObject) {
-//        sender.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
-//        right()
-//            }
-    
-    @IBAction func left(sender: AnyObject) {
-        sender.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
-        let string = "l"
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            self.serialPort?.sendData(data)
-        }
-    }
-    
-    
+    // Manage OpenClose Port Interface
     @IBAction func openOrClosePort(sender: AnyObject) {
+        
         if let port = self.serialPort {
             if (port.open) {
                 port.close()
@@ -134,26 +119,10 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         }
     }
     
-    @IBAction func stopBtn(sender: AnyObject){
-        stop()
-       
-    }
     
-    func right(){
-        print("right")
-        var string = "r"
-        string += "\n"
-        
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            self.serialPort?.sendData(data)
-        }
-
-    }
-    
-    
-    
-    
+    // Stop Rig
     func stop(){
+        
         print("stop")
         var string = "s"
         string += "\n"
@@ -163,7 +132,11 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
             
         }
     }
+    
+    
+    
     // MARK: - RUNTIME
+    
     override func awakeFromNib() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SerialCommunicationController.moveToPosition), name: keys.moveTo, object: nil)
     }
@@ -186,13 +159,14 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         serialPort.baudRate = 115200
             }
     
+    
     func serialPortWasClosed(serialPort: ORSSerialPort) {
         self.openCloseButton.title = "Open"
     }
     
+    
     func serialPort(serialPort: ORSSerialPort, didReceivePacket packetData: NSData, matchingDescriptor descriptor: ORSSerialPacketDescriptor) {
         if let dataAsString = NSString(data: packetData, encoding: NSASCIIStringEncoding) {
-//            let valueString = dataAsString.substringWithRange(NSRange(location: 4, length: dataAsString.length-5))
             
             var cleanString = String(String(dataAsString).characters.dropFirst())
             cleanString = String(String(cleanString).characters.dropLast())
@@ -219,15 +193,18 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         print("SerialPort \(serialPort) encountered an error: \(error)")
     }
     
+    
+    
     // MARK : NSNotificationCenter
     
     
     func updateCameraPosition(){
 
     }
-
+    
+    
+    //  Func for New Movement
     func moveToPosition(notification : NSNotification){
-        print("moveToPosition call")
         
         guard let userInfo = notification.userInfo,
             let targetString  = userInfo["moveTo"] as? String
@@ -237,16 +214,19 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         }
         
         
-        let toArray = targetString.componentsSeparatedByString(" ")
+        let toArray = targetString.componentsSeparatedByString(" ") // split String into Arra to remove Whitespace
         var cleanString = toArray.joinWithSeparator("")
         
         cleanString += "\n"
         print("target set to : \(cleanString)")
+        
         if let data = cleanString.dataUsingEncoding(NSUTF8StringEncoding) {
             self.serialPort?.sendData(data)
             
         }
     }
+    
+    
     
     // MARK: - NSUserNotifcationCenterDelegate
     

@@ -35,8 +35,6 @@ class LabelCollectionViewItem: NSCollectionViewItem {
 		didSet {
 			(self.view as! LabelCollectionViewItemView).highlightState = highlightState
             self.view.wantsLayer = true
-//            slice!.status = .current
-//            self.view.layer?.backgroundColor = slice!.itemColor.CGColor
             
 		}
         

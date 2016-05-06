@@ -5,10 +5,14 @@
 //  Created by ben on 02/05/2016.
 //  Copyright © 2016 Benjamin Rohel. All rights reserved.
 //
+////// Simple Class to Easy access Notification Keys
 
 import Cocoa
 
 class NSNotificationCenterKeys: NSObject {
+    
+    
+    // Keys for All notifications
     
     let cameraPositionKey = "cameraPositionKey"
     let homeKey = "homeKey"
@@ -22,6 +26,9 @@ class NSNotificationCenterKeys: NSObject {
     let gridSettings = "gridSettings"
     let setGrid = "setGrid"
     let moveTo = "moveTo"
+    
+    
+    // MARK : parse Data to assign X and Y
     
     func parseData(incomeString : String)-> (Int,Int){
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B534D3AE1CD8EA20009004FC /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3AD1CD8EA20009004FC /* CircleView.swift */; };
-		B534D3B01CD924A5009004FC /* JogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3AF1CD924A5009004FC /* JogButton.swift */; };
 		B534D3BC1CDABFDC009004FC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3BA1CDABFDC009004FC /* ImageViewController.swift */; };
 		B534D3C11CDAC084009004FC /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3BF1CDAC084009004FC /* GridViewController.swift */; };
 		B541D8311CD73487002F5C44 /* RigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541D8301CD73487002F5C44 /* RigView.swift */; };
@@ -38,7 +37,6 @@
 		B59C32811CD65FC0007AC111 /* SerialCommunicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */; };
 		B59C32861CD72ECF007AC111 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C32841CD72ECF007AC111 /* Quartz.framework */; };
 		B59C32871CD72ECF007AC111 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C32851CD72ECF007AC111 /* QuartzCore.framework */; };
-		B5F440611CDBC319000006E9 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F440601CDBC319000006E9 /* Progress.swift */; };
 		B5F440641CDBC936000006E9 /* CustomProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F440631CDBC936000006E9 /* CustomProgressIndicator.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +80,6 @@
 
 /* Begin PBXFileReference section */
 		B534D3AD1CD8EA20009004FC /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		B534D3AF1CD924A5009004FC /* JogButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogButton.swift; sourceTree = "<group>"; };
 		B534D3BA1CDABFDC009004FC /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		B534D3BF1CDAC084009004FC /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		B541D8301CD73487002F5C44 /* RigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigView.swift; sourceTree = "<group>"; };
@@ -118,7 +115,6 @@
 		B59C32801CD65FC0007AC111 /* SerialCommunicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialCommunicationController.swift; sourceTree = "<group>"; };
 		B59C32841CD72ECF007AC111 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		B59C32851CD72ECF007AC111 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		B5F440601CDBC319000006E9 /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		B5F440631CDBC936000006E9 /* CustomProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,8 +245,6 @@
 				B59C32651CD65C88007AC111 /* Rig.swift */,
 				B59C32661CD65C88007AC111 /* Slice.swift */,
 				B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */,
-				B534D3AF1CD924A5009004FC /* JogButton.swift */,
-				B5F440601CDBC319000006E9 /* Progress.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -435,11 +429,9 @@
 				B5F440641CDBC936000006E9 /* CustomProgressIndicator.swift in Sources */,
 				B59C325F1CD65C6B007AC111 /* RoundButton.swift in Sources */,
 				B541D83F1CD7D116002F5C44 /* CustomSegmentedControl.swift in Sources */,
-				B534D3B01CD924A5009004FC /* JogButton.swift in Sources */,
 				B59C326B1CD65C88007AC111 /* Slice.swift in Sources */,
 				B59C326A1CD65C88007AC111 /* Rig.swift in Sources */,
 				B59C32611CD65C6B007AC111 /* StyleKit.swift in Sources */,
-				B5F440611CDBC319000006E9 /* Progress.swift in Sources */,
 				B541D8371CD79F04002F5C44 /* NSNotificationCenterKeys.swift in Sources */,
 				B59C32711CD65D05007AC111 /* ViewController.swift in Sources */,
 				B541D8351CD7359E002F5C44 /* RigViewController.swift in Sources */,
