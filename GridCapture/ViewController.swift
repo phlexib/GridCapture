@@ -8,22 +8,27 @@
 
 import Cocoa
 
-class ViewController: NSViewController, NSCollectionViewDataSource {
-    
+
+
+class ViewController: NSViewController, ContainerToMaster {
+
     // MARK: VARIABLES
     
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
     let moveProgress = NSProgress()
     let pictureProgress = NSProgress()
     var rig : Rig = Rig()
-    var currentGrid : GridController = GridController()
+    var grid : GridController = GridController()
+    var centerRigViewController: RigViewController?
+    var centerGridViewController: GridViewController?
     var slices : NSMutableArray = NSMutableArray()
     var currentFrameIndex = 0
-    var rows : NSNumber = 5
-    var columns : NSNumber = 5
+    var rows : Int = 5
+    var columns : Int = 5
     var xPosition: Int = 1
     var yPosition: Int = 1
     var currentPosition = (x:0,y:0)
+    var startPosition = (x:0,y:0)
     var targetPosition = (x:0,y:0)
     var stringXPosition : String{
         get{
@@ -45,9 +50,8 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     @IBOutlet weak var mainView: NSView!
     @IBOutlet weak var scrollView: NSView!
     @IBOutlet weak var clipView: NSView!
-    @IBOutlet weak var centerContainer: NSView!
+    @IBOutlet weak var centerContainerView: NSView!
     @IBOutlet weak var moveProgressWheel: NSProgressIndicator!
-	@IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var horizontalSlider: NSSlider!
     @IBOutlet weak var verticalSLider: NSSlider!
     @IBOutlet weak var labelHorizontal: NSTextField!
@@ -55,11 +59,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     @IBOutlet weak var setGridBtn: NSButton!
     @IBOutlet weak var xPositionLabel: NSTextField!
     @IBOutlet weak var yPositionLabel: NSTextField!
-    @IBOutlet weak var xStartPositionText: NSTextField!
-    @IBOutlet weak var xEndPositionText: NSTextField!
-    @IBOutlet weak var yStartPositionText: NSTextField!
-    @IBOutlet weak var yEndPositionText: NSTextField!
-    @IBOutlet weak var xStepLabel: NSTextField!
+    @IBOutlet weak var arduinoCallback: NSTextField!
     
    
     // MARK: RUNTIME
@@ -77,20 +77,10 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         
         mainView.wantsLayer = true
         mainView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
-        scrollView.wantsLayer = true
-        scrollView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
-        clipView.wantsLayer = true
-        clipView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
-        
+                
        
         // COLLECTIONVIEW 
-        
-		collectionView.dataSource = self
-        collectionView.wantsLayer = true
-        collectionView.maxNumberOfRows = 5
-        collectionView.maxNumberOfColumns = 5
-        currentGrid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
-        collectionView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
+       
 	
         // Variables to Default Values
         
@@ -102,6 +92,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         // INIT Notification Observers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.moveToPosition), name: keys.moveTo, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCallback), name: keys.arduinoCallback, object: nil)
     }
     
     
@@ -111,34 +102,44 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
 
     // update collectionView with sliders
     @IBAction func changeSLider(sender: AnyObject) {
-        
-        // assign new values to CollectionView
-        collectionView.maxNumberOfColumns = horizontalSlider.integerValue
-        collectionView.maxNumberOfRows = verticalSLider.integerValue
-        collectionView.setNeedsDisplayInRect(collectionView.frame)
-        collectionView.reloadData()
-        
+
         // set Grid Instance to CollectionView size
-        currentGrid.rows = collectionView.maxNumberOfRows
-        currentGrid.columns = collectionView.maxNumberOfColumns
+        
+    let col = horizontalSlider.integerValue
+    let ro = verticalSLider.integerValue
         
         // Post Notification for Grid ViewController
-        let gridNotification = ["rows" : collectionView.maxNumberOfRows, "columns" : collectionView.maxNumberOfColumns]
+        let gridNotification = ["rows" : ro, "columns" : col]
         NSNotificationCenter.defaultCenter().postNotificationName(keys.gridSettings, object: self, userInfo :gridNotification)
         
     }
     
     // update collectionView array and Grid
-    @IBAction func setGrid(sender: AnyObject) {
+    @IBAction func setUpGrid(sender: AnyObject) {
         
         // post Notification to Set GridController
-        NSNotificationCenter.defaultCenter().postNotificationName(keys.setGrid, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(keys.setUpGrid, object: self)
         print("Set Grid for current  Project")
+        
         
     }
     
     
+    func updateInfo(text: String) {
+        yPositionLabel.stringValue = text
+    }
+    
     // MARK : NSNOTIFICATIONCENTER
+    
+    func updateCallback(notification:NSNotification) {
+        guard let userInfo = notification.userInfo,
+            let arduinoInfo  = userInfo["callback"] as? String
+            else {
+                print("No userInfo found in notification")
+                return
+        }
+        arduinoCallback.stringValue = arduinoInfo
+    }
     
     // update callbacks UI and progress bar to new position
     func updateCameraPosition(notification:NSNotification){
@@ -156,35 +157,34 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
         
         // prep variables for NSProgress
         
-        let startPosition = currentPosition
+        
         currentPosition.x = xInfo as! Int
         currentPosition.y = yInfo as! Int
         xPositionLabel.stringValue = String(currentPosition.x)
         yPositionLabel.stringValue = String(currentPosition.y)
-        let xDestinationPosition = targetPosition.x
-        let yDestinationPosition = targetPosition.x
-        let xDistance = xDestinationPosition - startPosition.x
-        let tempX =  currentPosition.x - startPosition.x
-        let yDistance = yDestinationPosition - startPosition.y
-        let tempY =  currentPosition.y - startPosition.y
-
-        // Set NSProgress with current move 
-        // TODO needs to get a percentage for the Pending count based on difference between X and Y distance
         
-        let xMoveProgress = NSProgress(totalUnitCount: Int64(xDistance))
-        xMoveProgress.completedUnitCount = Int64(tempX)
-        let yMoveProgress = NSProgress(totalUnitCount: Int64(yDistance))
-        yMoveProgress.completedUnitCount = Int64(tempY)
-        moveProgress.totalUnitCount = Int64(xDestinationPosition)
-        moveProgress.completedUnitCount = Int64(currentPosition.x)
-        moveProgress.addChild(yMoveProgress, withPendingUnitCount: 50)
+    }
+    
+    func updateProgress(){
+        
+        let xDestinationPosition = targetPosition.x
+        let yDestinationPosition = targetPosition.y
+        let xDistance = abs(xDestinationPosition - startPosition.x)
+        let tempX =  abs(currentPosition.x - startPosition.x)
+        let yDistance = abs(yDestinationPosition - startPosition.y)
+        let tempY =  abs(currentPosition.y - startPosition.y)
+        let completedXy = tempX + tempY
+        let xyDistance = xDistance + yDistance
+        
+        moveProgress.totalUnitCount = Int64(xyDistance)
+        moveProgress.completedUnitCount = Int64(completedXy)
         xPositionLabel.stringValue = moveProgress.localizedDescription
         
         // update progress Wheel
         moveProgressWheel.doubleValue = moveProgress.fractionCompleted*100
-        
+
+
     }
-    
     // Set X and Y Target Position from Grid
     func moveToPosition(notification : NSNotification){
        
@@ -195,6 +195,8 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
                 print("No userInfo found in notification")
                 return
         }
+        print(targetString)
+       
         let xTarget = Int(targetString.componentsSeparatedByString(",")[0])
         let yTarget = Int(targetString.componentsSeparatedByString(",")[1])
         targetPosition.x = xTarget!
@@ -202,7 +204,36 @@ class ViewController: NSViewController, NSCollectionViewDataSource {
     }
     
     
+    func progress(){
+        
+    }
     
+    
+    // MARK: PASSING DATA 
+    
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "centerContainersegue" {
+            let containerControllers = segue.destinationController as! NSTabViewController
+            centerRigViewController = containerControllers.childViewControllers[0] as? RigViewController
+            centerGridViewController = containerControllers.childViewControllers[1] as? GridViewController
+            
+            let newPosition = CGPointMake(CGFloat(currentPosition.x), CGFloat(currentPosition.y))
+            centerRigViewController!.cameraPosition = newPosition
+            centerRigViewController!.updateCameraPosition()
+            
+            
+//            grid.slices = NSMutableArray(capacity: columns * rows)
+//            centerGridViewController?.grid = grid
+            }
+        
+        
+    }
+
+    
+    func changeLabel(text:String){
+        yPositionLabel.stringValue = text
+    }
    	//MARK: NSCollectionViewDataSource
 	
 	func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {

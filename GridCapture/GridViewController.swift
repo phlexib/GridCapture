@@ -15,7 +15,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
     
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
     var rig : Rig = Rig()
-    var currentGrid : GridController = GridController()
+    var grid : GridController = GridController()
     var slices : NSMutableArray = NSMutableArray()
     var currentFrameIndex = 0
     var rows : NSNumber = 5
@@ -75,11 +75,11 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         collectionView.wantsLayer = true
         collectionView.maxNumberOfRows = 5
         collectionView.maxNumberOfColumns = 5
-        currentGrid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
+        grid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
         collectionView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
         
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.setGrid), name: keys.setGrid, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.setUpGrid), name: keys.setUpGrid, object: nil)
     }
     
     // MARK: NOTIFICATION
@@ -94,12 +94,12 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
                 print("No userInfo found in notification")
                 return
         }
-        
+        print ("received infos : \(ro) and \(col)")
         rows = ro
         columns = col
         collectionView.maxNumberOfColumns = Int(columns)
         collectionView.maxNumberOfRows = Int(rows)
-        currentGrid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
+        grid.slices = NSMutableArray(capacity: collectionView.maxNumberOfRows * collectionView.maxNumberOfColumns)
         collectionView.reloadData()
         
     }
@@ -107,10 +107,10 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
     
     //MARK: CUSTOM FUNCTIONS
 
-    func setGrid(notification:NSNotification) {
+    func setUpGrid(notification:NSNotification) {
     
         // reinit Grid Instance
-        currentGrid.slices=[]
+        grid.slices=[]
 
         // set up collectionView
         collectionView.maxNumberOfRows = Int(rows)
@@ -125,29 +125,29 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             let sliceItem = collItem.representedObject as! Slice!
             sliceItem.indexFrame = index+1
             sliceItem.position = collItem.getPosition(index+1, maxRows: collectionView.maxNumberOfRows, maxColumns: collectionView.maxNumberOfColumns)
-            currentGrid.slices.addObject(collItem)
+            grid.slices.addObject(collItem)
            
             
         }
         
         // Convert UI Grid to Steps
-        currentGrid.startPosition = (0,0)
-        currentGrid.endPosition = (75000,75000)
-        currentGrid.rows = collectionView.maxNumberOfRows
-        currentGrid.columns = collectionView.maxNumberOfColumns
+        grid.startPosition = (0,0)
+        grid.endPosition = (75000,75000)
+        grid.rows = collectionView.maxNumberOfRows
+        grid.columns = collectionView.maxNumberOfColumns
         
-        let interXDistance = (currentGrid.endPosition.x - currentGrid.startPosition.x) / (currentGrid.columns-1)
-        let interYDistance = (currentGrid.endPosition.y - currentGrid.startPosition.y) / (currentGrid.rows-1)
+        let interXDistance = (grid.endPosition.x - grid.startPosition.x) / (grid.columns-1)
+        let interYDistance = (grid.endPosition.y - grid.startPosition.y) / (grid.rows-1)
         
-        let firstItem = currentGrid.slices[0] as! LabelCollectionViewItem
-        firstItem.slice!.stepPosition = (currentGrid.startPosition.x,currentGrid.startPosition.y)
+        let firstItem = grid.slices[0] as! LabelCollectionViewItem
+        firstItem.slice!.stepPosition = (grid.startPosition.x,grid.startPosition.y)
         
         
         // Assign each Step Position to Slices
-        for i in 0..<(currentGrid.slices.count)  {
-            let theSliceItem = currentGrid.slices[i] as! LabelCollectionViewItem
-            let itemX = currentGrid.startPosition.x + (theSliceItem.slice!.position.x * interXDistance)-interXDistance
-            let itemY = currentGrid.endPosition.y - (currentGrid.startPosition.y + (theSliceItem.slice!.position.y * interYDistance)-interYDistance)
+        for i in 0..<(grid.slices.count)  {
+            let theSliceItem = grid.slices[i] as! LabelCollectionViewItem
+            let itemX = grid.startPosition.x + (theSliceItem.slice!.position.x * interXDistance)-interXDistance
+            let itemY = grid.endPosition.y - (grid.startPosition.y + (theSliceItem.slice!.position.y * interYDistance)-interYDistance)
             
             let itemPos = (itemX,itemY)
             

@@ -51,6 +51,7 @@ class LabelCollectionViewItem: NSCollectionViewItem {
     // CONTEXTUAL ACTIONS
 
     @IBAction func goToFrame(sender: AnyObject) {
+        
         slice!.position = getPosition(slice!.indexFrame,maxRows: collectionView.maxNumberOfRows,maxColumns: collectionView.maxNumberOfColumns)
         slice!.status = .current
         self.view.layer?.backgroundColor = slice!.itemColor.CGColor
@@ -58,7 +59,8 @@ class LabelCollectionViewItem: NSCollectionViewItem {
         
         let xString = String(slice!.stepPosition.x)
         let yString = String(slice!.stepPosition.y)
-        let string = xString+","+yString
+        
+        let string = xString + "," + yString
         let moveToInfo = ["moveTo" : string]
         NSNotificationCenter.defaultCenter().postNotificationName(keys.moveTo, object: self, userInfo: moveToInfo)
             }

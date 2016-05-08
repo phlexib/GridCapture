@@ -17,7 +17,7 @@ class GridController: NSObject {
     var rows : Int = 5
     var startPosition = (x:0 , y:0)
     var endPosition = (x:0,y:0)
-    var totalOfSlices : NSNumber {
+    var totalOfSlices : Int {
         get{
             return (Int(rows) * Int(columns))
         }

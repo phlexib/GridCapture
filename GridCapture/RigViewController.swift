@@ -8,12 +8,19 @@
 
 import Cocoa
 
-class RigViewController: NSViewController {
+protocol ContainerToMaster {
+    
+    func updateInfo(text:String)
+}
+
+class RigViewController: NSViewController{
+    
     
     // MARK: - VARIABLES
     
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
-    
+    var cameraPosition = CGPoint()
+    var containerToMaster:ContainerToMaster?
     
     // MARK: - IBOUTLETS
     
@@ -29,15 +36,21 @@ class RigViewController: NSViewController {
         circleView.frame.origin = CGPointMake(0, 0)
     }
     
+ 
+    
     override func viewWillAppear() {
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPositionFromNotification), name: keys.cameraPositionKey, object: nil)
     }
     
+    
+    func updateInfo(text: String) {
+        print("Trigger from Master ViewController")
+    }
     
     
     //MARK: NOTIFICATIONS
     
-    func updateCameraPosition(notification:NSNotification){
+    func updateCameraPositionFromNotification(notification:NSNotification){
         
         guard let userInfo = notification.userInfo,
             let xInfo  = userInfo["xPosition"] as? Int,
@@ -49,10 +62,21 @@ class RigViewController: NSViewController {
         let xPosFloat = (CGFloat(xInfo) / 75000 * self.view.frame.width) - circleView.frame.width/2
         let yPosFloat = (CGFloat(yInfo) / 75000 * self.view.frame.height)  - circleView.frame.height/2
         
-        let newPosition = CGPointMake(xPosFloat, yPosFloat)
+        cameraPosition = CGPointMake(xPosFloat, yPosFloat)
         
-        circleView.frame.origin = newPosition
+        circleView.frame.origin = cameraPosition
     }
 
+    func updateCameraPosition(){
+        
+        let xPosFloat = (CGFloat(cameraPosition.x) / 75000 * self.view.frame.width) - circleView.frame.width/2
+        let yPosFloat = (CGFloat(cameraPosition.y) / 75000 * self.view.frame.height)  - circleView.frame.height/2
+        
+        cameraPosition = CGPointMake(xPosFloat, yPosFloat)
+        
+        circleView.frame.origin = cameraPosition
+    }
+
+    
     
 }

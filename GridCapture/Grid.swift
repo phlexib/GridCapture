@@ -13,10 +13,10 @@ class Grid: NSObject {
     
     // MARK: VARIABLES
     var name: String
-    var columns : NSNumber
-    var rows : NSNumber
+    var columns : Int
+    var rows : Int
     var sliceArray : NSMutableArray
-    var totalOfSlices : NSNumber {
+    var totalOfSlices : Int {
         get{
           return (Int(rows) * Int(columns))
         }
@@ -39,12 +39,13 @@ class Grid: NSObject {
 
     
     // INIT With Rows and Columns ---- TODO
-    init(name:String,columns:NSNumber, rows:NSNumber){
+    init(name:String,columns:Int, rows:Int){
         
         self.name = name
         self.columns = columns
         self.rows = rows
-        sliceArray = NSMutableArray(capacity: (Int(self.columns) * Int(self.rows)))
+       
+        sliceArray = NSMutableArray(capacity: (self.columns) * (self.rows))
     }
 
 }

@@ -24,14 +24,15 @@ class NSNotificationCenterKeys: NSObject {
     let rigIsConnected = "rigIsConnected"
     let rigIsDisconnected = "rigIsDisconnected"
     let gridSettings = "gridSettings"
-    let setGrid = "setGrid"
+    let setUpGrid = "setUpGrid"
     let moveTo = "moveTo"
+    let arduinoCallback = "arduinoCallback"
     
-    
+        
     // MARK : parse Data to assign X and Y
     
-    func parseData(incomeString : String)-> (Int,Int){
-
+    func parseDataPosition(incomeString : String)-> (Int,Int){
+        
         let splitString = incomeString.componentsSeparatedByString(",")
         var position = (x:0,y:0)
         if splitString.count > 0 {

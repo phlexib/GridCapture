@@ -38,6 +38,7 @@
 		B59C32861CD72ECF007AC111 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C32841CD72ECF007AC111 /* Quartz.framework */; };
 		B59C32871CD72ECF007AC111 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59C32851CD72ECF007AC111 /* QuartzCore.framework */; };
 		B5F440641CDBC936000006E9 /* CustomProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F440631CDBC936000006E9 /* CustomProgressIndicator.swift */; };
+		B5F4406A1CDC6EE3000006E9 /* CameraObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F440691CDC6EE3000006E9 /* CameraObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		B59C32841CD72ECF007AC111 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		B59C32851CD72ECF007AC111 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B5F440631CDBC936000006E9 /* CustomProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressIndicator.swift; sourceTree = "<group>"; };
+		B5F440691CDC6EE3000006E9 /* CameraObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				B59C32651CD65C88007AC111 /* Rig.swift */,
 				B59C32661CD65C88007AC111 /* Slice.swift */,
 				B541D8361CD79F04002F5C44 /* NSNotificationCenterKeys.swift */,
+				B5F440691CDC6EE3000006E9 /* CameraObject.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				B534D3C11CDAC084009004FC /* GridViewController.swift in Sources */,
 				B59C32271CD65C07007AC111 /* AppDelegate.swift in Sources */,
 				B59C32671CD65C88007AC111 /* Grid.swift in Sources */,
+				B5F4406A1CDC6EE3000006E9 /* CameraObject.swift in Sources */,
 				B534D3BC1CDABFDC009004FC /* ImageViewController.swift in Sources */,
 				B59C32691CD65C88007AC111 /* LabelCollectionViewItem.swift in Sources */,
 			);

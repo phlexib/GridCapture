@@ -14,6 +14,51 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     
     // MARK: - VARIABLES
     
+    enum dataTosend : String{
+        
+        case right = "!r"
+        case left = "!l"
+        case up = "!u"
+        case down = "!d"
+        case goTo = "!g"
+        case setStart = "!a"
+        case setEnd = "!b"
+        case startMove = "!m"
+        case stop = "!s"
+        case home = "!h"
+        case zero = "!z"
+        
+        func simpleDescription() -> String {
+            
+            switch self {
+            case .right:
+                return "!r"
+            case .left:
+                return "!l"
+            case .up:
+                return "!u"
+            case .down:
+                return "!d"
+            case .goTo:
+                return "!g"
+            case .setStart:
+                return "!a"
+            case .setEnd:
+                return "!b"
+            case .startMove:
+                return "!m"
+            case .stop:
+                return "!s"
+            case .home:
+                return "!h"
+            case .zero:
+                return "1z"
+            }
+        }
+        
+    }
+
+    
     let keys = NSNotificationCenterKeys() // Keys for Notifications
     var currentIncomingString = NSString()
     var stringReceived = NSString()
@@ -37,6 +82,7 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     
     @IBOutlet weak var openCloseButton: NSButton!
     @IBOutlet weak var rigStatusIndicator : StatusBtn!
+    @IBOutlet weak var zeroBtn: NSButton!
     
     
     
@@ -51,41 +97,39 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         let btnId = (sender as! NSButton).identifier!
         switch btnId{
             case "up" :
-                string = "u"
+                string = dataTosend.up.rawValue
             case "down":
-                string = "d"
+                string = dataTosend.down.rawValue
             case "left":
-                string = "l"
+                string = dataTosend.left.rawValue
             case "right":
-                string = "r"
+                string = dataTosend.right.rawValue
             case "stop":
-                string = "s"
-        case "home" :
-                string = "h"
+                string = dataTosend.stop.rawValue
+            case "home" :
+                string = dataTosend.home.rawValue
+            case "zero" :
+            string = dataTosend.zero.rawValue
         default :
                 string = "s"
             
         }
-        
-        string += "\n"
-        
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            print("btn actions")
+        let stringtoSend = string + "\n"
+                if let data = stringtoSend.dataUsingEncoding(NSUTF8StringEncoding) {
+            print("sent \(stringtoSend)")
             self.serialPort?.sendData(data)
         }
     }
     
-    // Stop Action Interface
-    @IBAction func stopBtn(sender: AnyObject){
-        stop()
-    }
 
     
     // Set StartPoint of Grid
     @IBAction func setStart(sender: AnyObject) {
         
-        let string = "x"
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
+        let string = dataTosend.setStart.rawValue
+        let stringtoSend = string + "\n"
+        if let data = stringtoSend.dataUsingEncoding(NSUTF8StringEncoding) {
+            print("sent \(stringtoSend)")
             self.serialPort?.sendData(data)
         }
     }
@@ -94,8 +138,10 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     // Set EndPoint Of Grid
     @IBAction func setEnd(sender: AnyObject) {
         
-        let string = "y"
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
+        let string = dataTosend.setEnd.rawValue
+        let stringtoSend = string + "\n"
+        if let data = stringtoSend.dataUsingEncoding(NSUTF8StringEncoding) {
+            print("sent \(stringtoSend)")
             self.serialPort?.sendData(data)
         }
     }
@@ -120,20 +166,6 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     }
     
     
-    // Stop Rig
-    func stop(){
-        
-        print("stop")
-        var string = "s"
-        string += "\n"
-        
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            self.serialPort?.sendData(data)
-            
-        }
-    }
-    
-    
     
     // MARK: - RUNTIME
     
@@ -152,7 +184,7 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     // MARK: - ORSSerialPortDelegate
     
     func serialPortWasOpened(serialPort: ORSSerialPort) {
-        let descriptor = ORSSerialPacketDescriptor(prefixString: "!", suffixString: ";", maximumPacketLength: 14, userInfo: nil)
+        let descriptor = ORSSerialPacketDescriptor(prefixString: "!", suffixString: ";", maximumPacketLength: 50, userInfo: nil)
         serialPort.startListeningForPacketsMatchingDescriptor(descriptor)
 
         self.openCloseButton.title = "Close"
@@ -169,16 +201,30 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         if let dataAsString = NSString(data: packetData, encoding: NSASCIIStringEncoding) {
             
             var cleanString = String(String(dataAsString).characters.dropFirst())
-            cleanString = String(String(cleanString).characters.dropLast())
+            
+                print("data received : \(cleanString)")
             
             if cleanString != currentIncomingString {
-                let position = keys.parseData(cleanString)
-                print(position)
-                let posNotification = ["xPosition" : position.0, "yPosition" : position.1]
-                NSNotificationCenter.defaultCenter().postNotificationName(keys.cameraPositionKey, object: self, userInfo :posNotification)
-                currentIncomingString = cleanString
+                if cleanString[0] == "g" {
+                    cleanString = String(String(cleanString).characters.dropFirst())
+                    cleanString = String(String(cleanString).characters.dropLast())
+                    print(cleanString)
+                    let position = keys.parseDataPosition(cleanString)
+                    let posNotification = ["xPosition" : position.0, "yPosition" : position.1]
+                    NSNotificationCenter.defaultCenter().postNotificationName(keys.cameraPositionKey, object: self, userInfo :posNotification)
+                    currentIncomingString = cleanString
                 }
-           
+                else if cleanString[0] == "#" {
+                    cleanString = String(String(cleanString).characters.dropFirst())
+                    cleanString = String(String(cleanString).characters.dropLast())
+                    let posNotification = ["callback" : cleanString]
+                    NSNotificationCenter.defaultCenter().postNotificationName(keys.arduinoCallback, object: self, userInfo :posNotification)
+                    currentIncomingString = cleanString 
+                                    }
+                else{
+                    print("Non Usable data from Arduino")
+                }
+            }
             
         }
     }
@@ -217,12 +263,11 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         let toArray = targetString.componentsSeparatedByString(" ") // split String into Arra to remove Whitespace
         var cleanString = toArray.joinWithSeparator("")
         
-        cleanString += "\n"
         print("target set to : \(cleanString)")
-        
+        cleanString = dataTosend.goTo.rawValue + cleanString
+        cleanString += "\n"
         if let data = cleanString.dataUsingEncoding(NSUTF8StringEncoding) {
             self.serialPort?.sendData(data)
-            
         }
     }
     
@@ -279,5 +324,23 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
             userNote.soundName = nil;
             unc.deliverNotification(userNote)
         }
+    }
+    
+}
+
+extension String {
+    
+    subscript (i: Int) -> Character {
+        return self[self.startIndex.advancedBy(i)]
+    }
+    
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
+    subscript (r: Range<Int>) -> String {
+        let start = startIndex.advancedBy(r.startIndex)
+        let end = start.advancedBy(r.endIndex - r.startIndex)
+        return self[Range(start ..< end)]
     }
 }
