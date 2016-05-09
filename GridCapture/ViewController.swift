@@ -10,7 +10,7 @@ import Cocoa
 
 
 
-class ViewController: NSViewController, ContainerToMaster {
+class ViewController: NSViewController {
 
     // MARK: VARIABLES
     
@@ -221,7 +221,7 @@ class ViewController: NSViewController, ContainerToMaster {
             let newPosition = CGPointMake(CGFloat(currentPosition.x), CGFloat(currentPosition.y))
             centerRigViewController!.cameraPosition = newPosition
             centerRigViewController!.updateCameraPosition()
-            
+            print("going to RigView")
             
 //            grid.slices = NSMutableArray(capacity: columns * rows)
 //            centerGridViewController?.grid = grid

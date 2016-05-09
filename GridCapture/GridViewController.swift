@@ -132,12 +132,17 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         
         // Convert UI Grid to Steps
         grid.startPosition = (0,0)
-        grid.endPosition = (75000,75000)
+        grid.endPosition = (10000,10000)
         grid.rows = collectionView.maxNumberOfRows
         grid.columns = collectionView.maxNumberOfColumns
         
+        
+        
         let interXDistance = (grid.endPosition.x - grid.startPosition.x) / (grid.columns-1)
         let interYDistance = (grid.endPosition.y - grid.startPosition.y) / (grid.rows-1)
+        
+//        grid.startPosition.x = grid.startPosition.x
+//        grid.startPosition.y = grid.startPosition.y
         
         let firstItem = grid.slices[0] as! LabelCollectionViewItem
         firstItem.slice!.stepPosition = (grid.startPosition.x,grid.startPosition.y)
@@ -152,6 +157,8 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             let itemPos = (itemX,itemY)
             
             theSliceItem.slice!.stepPosition = itemPos
+            
+            print(itemPos)
         }
         
         //        horizontalSlider.enabled = false

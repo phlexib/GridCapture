@@ -110,6 +110,12 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
                 string = dataTosend.home.rawValue
             case "zero" :
             string = dataTosend.zero.rawValue
+            let prefs = NSUserDefaults.standardUserDefaults()
+            let storedX = 0
+            let storedY = 0
+            //                   let storedPosition [String:]= ["pos":position]
+            prefs.setValue(storedX, forKey: "xPosition")
+            prefs.setValue(storedY, forKey: "yPosition")
         default :
                 string = "s"
             
@@ -221,6 +227,17 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
                     NSNotificationCenter.defaultCenter().postNotificationName(keys.arduinoCallback, object: self, userInfo :posNotification)
                     currentIncomingString = cleanString 
                                     }
+                else if cleanString[0] == "p" {
+                    cleanString = String(String(cleanString).characters.dropFirst())
+                    cleanString = String(String(cleanString).characters.dropLast())
+                    let prefs = NSUserDefaults.standardUserDefaults()
+                    let position = keys.parseDataPosition(cleanString)
+                    let storedX = position.x
+                    let storedY = position.y
+//                   let storedPosition [String:]= ["pos":position]
+                    prefs.setValue(storedX, forKey: "xPosition")
+                    prefs.setValue(storedY, forKey: "yPosition")
+                }
                 else{
                     print("Non Usable data from Arduino")
                 }

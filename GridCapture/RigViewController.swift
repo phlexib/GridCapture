@@ -8,10 +8,7 @@
 
 import Cocoa
 
-protocol ContainerToMaster {
-    
-    func updateInfo(text:String)
-}
+
 
 class RigViewController: NSViewController{
     
@@ -20,35 +17,70 @@ class RigViewController: NSViewController{
     
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
     var cameraPosition = CGPoint()
-    var containerToMaster:ContainerToMaster?
+    var displayPosition = CGPoint()
+    var col = 5
+    var ro = 5
     
     // MARK: - IBOUTLETS
     
     @IBOutlet var rigView: RigView!
-    @IBOutlet weak var circleView: NSView!
-   
     
     
     // MARK: - RUNTIME
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        circleView.frame.origin = CGPointMake(0, 0)
+        self.view.wantsLayer = true
+        self.view.layer?.backgroundColor = StyleKit.rightMenu.CGColor
+
     }
     
  
     
-    override func viewWillAppear() {
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPositionFromNotification), name: keys.cameraPositionKey, object: nil)
+    override func awakeFromNib() {
+       
+        
     }
     
-    
-    func updateInfo(text: String) {
-        print("Trigger from Master ViewController")
+   
+    override func viewWillAppear() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.receiveGridInfo), name: keys.gridSettings, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RigViewController.updateCameraPositionFromNotification), name: keys.cameraPositionKey, object: nil)
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let storedX = prefs.integerForKey("xPosition")
+        cameraPosition.x = CGFloat(storedX)
+        let storedY = prefs.integerForKey("yPosition")
+        cameraPosition.y = CGFloat(storedY)
+        
+        print("fromn will appear position is \(storedX) and \(storedY)")
+  
+        updateCameraPosition()
+       
+        
+        
     }
     
     
     //MARK: NOTIFICATIONS
+    
+    // Ge Grid Info
+    func receiveGridInfo(notification : NSNotification){
+        guard let userInfo = notification.userInfo,
+             ro  = userInfo["rows"] as? Int,
+             col = userInfo["columns"] as? Int
+            else {
+                print("No userInfo found in notification")
+                return
+        }
+        print ("received infos : \(ro) and \(col)")
+        rigView.columns = col
+        rigView.rows = ro
+        
+//        repoRigView()
+        
+        
+    }
+
     
     func updateCameraPositionFromNotification(notification:NSNotification){
         
@@ -59,24 +91,26 @@ class RigViewController: NSViewController{
                 print("No userInfo found in notification")
                 return
         }
-        let xPosFloat = (CGFloat(xInfo) / 75000 * self.view.frame.width) - circleView.frame.width/2
-        let yPosFloat = (CGFloat(yInfo) / 75000 * self.view.frame.height)  - circleView.frame.height/2
-        
-        cameraPosition = CGPointMake(xPosFloat, yPosFloat)
-        
-        circleView.frame.origin = cameraPosition
+        cameraPosition = CGPointMake(CGFloat(xInfo),CGFloat(yInfo))
+        updateCameraPosition()
     }
 
     func updateCameraPosition(){
         
-        let xPosFloat = (CGFloat(cameraPosition.x) / 75000 * self.view.frame.width) - circleView.frame.width/2
-        let yPosFloat = (CGFloat(cameraPosition.y) / 75000 * self.view.frame.height)  - circleView.frame.height/2
+        let xPosFloat = (CGFloat(cameraPosition.x) / 10000 * self.view.frame.width)
+        let yPosFloat = (CGFloat(cameraPosition.y) / 10000 * self.view.frame.height)
         
-        cameraPosition = CGPointMake(xPosFloat, yPosFloat)
+        displayPosition = CGPointMake(xPosFloat, yPosFloat)
+        rigView.cameraPosition = displayPosition
+        rigView.needsDisplay = true
         
-        circleView.frame.origin = cameraPosition
-    }
+            }
 
-    
+//    func repoRigView(){
+//        rigView.frame.origin.x = self.view.frame.origin.x + (self.view.frame.width / CGFloat(col*2))
+//        rigView.frame.origin.y = self.view.frame.origin.y + (self.view.frame.height / CGFloat(ro*2))
+//        rigView.frame.size.width = self.view.frame.size.width - (self.view.frame.width / CGFloat(col))
+//        rigView.frame.size.height = self.view.frame.size.height - (self.view.frame.height / CGFloat(ro))
+//    }
     
 }

@@ -9,7 +9,8 @@
 import Cocoa
 
 class CircleView: NSView {
-
+    
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 
@@ -32,3 +33,4 @@ class CircleView: NSView {
     }
     
 }
+

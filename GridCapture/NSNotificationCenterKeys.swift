@@ -31,7 +31,7 @@ class NSNotificationCenterKeys: NSObject {
         
     // MARK : parse Data to assign X and Y
     
-    func parseDataPosition(incomeString : String)-> (Int,Int){
+    func parseDataPosition(incomeString : String)-> (x:Int,y:Int){
         
         let splitString = incomeString.componentsSeparatedByString(",")
         var position = (x:0,y:0)

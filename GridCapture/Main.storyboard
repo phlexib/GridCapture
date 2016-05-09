@@ -1091,10 +1091,10 @@
             </objects>
             <point key="canvasLocation" x="226" y="1509"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Center Tab View Controller-->
         <scene sceneID="k56-bE-mn7">
             <objects>
-                <tabViewController id="LIN-h6-cWr" sceneMemberID="viewController">
+                <tabViewController id="LIN-h6-cWr" customClass="CenterTabViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="UTe-fs-cgP"/>
                         <tabViewItem id="YwA-gu-t0n"/>
@@ -1120,18 +1120,12 @@
         <scene sceneID="LA8-cw-3Ga">
             <objects>
                 <viewController title="Rig" storyboardIdentifier="rigView" id="Yfx-4Z-l1H" customClass="RigViewController" customModule="GridCapture" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="ORY-UT-ZIQ" customClass="RigView" customModule="GridCapture" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lj-z5-5W6" userLabel="circleView" customClass="CircleView" customModule="GridCapture" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                            </customView>
-                        </subviews>
-                    </view>
+                    <customView key="view" id="WhE-uG-oex" userLabel="RigView" customClass="RigView" customModule="GridCapture" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                     <connections>
-                        <outlet property="circleView" destination="0Lj-z5-5W6" id="nUD-19-8Vm"/>
-                        <outlet property="rigView" destination="ORY-UT-ZIQ" id="Gp3-xl-A68"/>
+                        <outlet property="rigView" destination="WhE-uG-oex" id="epH-X3-QsA"/>
                     </connections>
                 </viewController>
                 <customObject id="4fp-bh-pR0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1464,6 +1458,18 @@
                 <customObject id="l0G-Ij-E42" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2209" y="2034"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oSf-et-Fad">
+            <objects>
+                <viewController id="Mze-gR-dWM" sceneMemberID="viewController">
+                    <view key="view" id="bJg-9N-n56">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Qa4-BM-FqS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
