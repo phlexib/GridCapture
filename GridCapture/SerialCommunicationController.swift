@@ -83,6 +83,7 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     @IBOutlet weak var openCloseButton: NSButton!
     @IBOutlet weak var rigStatusIndicator : StatusBtn!
     @IBOutlet weak var zeroBtn: NSButton!
+    @IBOutlet weak var rightBtn: NSButton!
     
     
     
@@ -132,6 +133,7 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     // Set StartPoint of Grid
     @IBAction func setStart(sender: AnyObject) {
         
+         NSNotificationCenter.defaultCenter().postNotificationName(keys.start, object: self)
         let string = dataTosend.setStart.rawValue
         let stringtoSend = string + "\n"
         if let data = stringtoSend.dataUsingEncoding(NSUTF8StringEncoding) {
@@ -143,7 +145,7 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
     
     // Set EndPoint Of Grid
     @IBAction func setEnd(sender: AnyObject) {
-        
+        NSNotificationCenter.defaultCenter().postNotificationName(keys.start, object: self)
         let string = dataTosend.setEnd.rawValue
         let stringtoSend = string + "\n"
         if let data = stringtoSend.dataUsingEncoding(NSUTF8StringEncoding) {
@@ -183,6 +185,9 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SerialCommunicationController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
+        
+        rightBtn.setPeriodicDelay(1, interval: 1)
+        
         
     }
     
@@ -237,7 +242,19 @@ class SerialCommunicationController: NSViewController, ORSSerialPortDelegate, NS
 //                   let storedPosition [String:]= ["pos":position]
                     prefs.setValue(storedX, forKey: "xPosition")
                     prefs.setValue(storedY, forKey: "yPosition")
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(keys.arrivedAtTarget, object: self)
+                    currentIncomingString = cleanString
+
                 }
+                else if cleanString[0] == "c" {
+                    cleanString = String(String(cleanString).characters.dropFirst())
+                    cleanString = String(String(cleanString).characters.dropLast())
+                    NSNotificationCenter.defaultCenter().postNotificationName(keys.pictureDone, object: self)
+                    currentIncomingString = cleanString
+                    
+                }
+
                 else{
                     print("Non Usable data from Arduino")
                 }

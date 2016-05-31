@@ -52,6 +52,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var clipView: NSView!
     @IBOutlet weak var centerContainerView: NSView!
     @IBOutlet weak var moveProgressWheel: NSProgressIndicator!
+    @IBOutlet weak var seqProgressBar: NSProgressIndicator!
     @IBOutlet weak var horizontalSlider: NSSlider!
     @IBOutlet weak var verticalSLider: NSSlider!
     @IBOutlet weak var labelHorizontal: NSTextField!
@@ -67,8 +68,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
 		super.viewDidLoad()
         
-       
-        // create default Rig
+               // create default Rig
         
         rig = Rig(motorStepsRevolution: 200, rigMmWidth: 1500, rigMmHeight: 1500, circomference: 8, microStep: 2)
         
@@ -79,7 +79,8 @@ class ViewController: NSViewController {
         mainView.layer?.backgroundColor = StyleKit.rightMenu.CGColor
                 
        
-        // COLLECTIONVIEW 
+        // Progress
+        moveProgressWheel.displayedWhenStopped = false
        
 	
         // Variables to Default Values
@@ -93,6 +94,9 @@ class ViewController: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCameraPosition), name: keys.cameraPositionKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.moveToPosition), name: keys.moveTo, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.updateCallback), name: keys.arduinoCallback, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.arrivedAtPosition), name: keys.arrivedAtTarget, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.receivedStart), name: keys.start, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.receivedEnd), name: keys.end, object: nil)
     }
     
     
@@ -117,6 +121,7 @@ class ViewController: NSViewController {
     // update collectionView array and Grid
     @IBAction func setUpGrid(sender: AnyObject) {
         
+
         // post Notification to Set GridController
         NSNotificationCenter.defaultCenter().postNotificationName(keys.setUpGrid, object: self)
         print("Set Grid for current  Project")
@@ -163,28 +168,63 @@ class ViewController: NSViewController {
         xPositionLabel.stringValue = String(currentPosition.x)
         yPositionLabel.stringValue = String(currentPosition.y)
         
+        updateProgress()
+        
     }
     
     func updateProgress(){
         
-        let xDestinationPosition = targetPosition.x
-        let yDestinationPosition = targetPosition.y
-        let xDistance = abs(xDestinationPosition - startPosition.x)
-        let tempX =  abs(currentPosition.x - startPosition.x)
-        let yDistance = abs(yDestinationPosition - startPosition.y)
-        let tempY =  abs(currentPosition.y - startPosition.y)
-        let completedXy = tempX + tempY
-        let xyDistance = xDistance + yDistance
+        var tempX =  (currentPosition.x - startPosition.x)
+        var xDistance = (targetPosition.x - startPosition.x)
+        
+        if targetPosition.x < startPosition.x{
+            xDistance = startPosition.x - targetPosition.x
+            tempX = startPosition.x - currentPosition.x
+        }
+        
+        var tempY =  (currentPosition.y - startPosition.y)
+        var yDistance = (targetPosition.y - startPosition.y)
+        
+        if targetPosition.y < startPosition.y{
+            yDistance = startPosition.y - targetPosition.y
+            tempY = startPosition.y - currentPosition.y
+        }
+        
+        
+        let xyDistance = xDistance + yDistance - 2
+        let tempXY = tempX + tempY
+        
         
         moveProgress.totalUnitCount = Int64(xyDistance)
-        moveProgress.completedUnitCount = Int64(completedXy)
+        moveProgress.completedUnitCount = Int64(tempXY)
         xPositionLabel.stringValue = moveProgress.localizedDescription
-        
-        // update progress Wheel
         moveProgressWheel.doubleValue = moveProgress.fractionCompleted*100
-
+        
 
     }
+    
+    
+    func arrivedAtPosition(notification:NSNotification){
+        moveProgress.cancel()
+        print ("arived at \(currentPosition)")
+        startPosition = currentPosition
+        moveProgressWheel.hidden = true
+        
+    }
+    
+    func receivedStart(){
+        grid.startPosition = currentPosition
+        print ("start is set to : \(grid.startPosition)")
+            }
+    
+    
+    func receivedEnd(){
+        grid.endPosition = currentPosition
+        print ("end is set to : \(grid.endPosition)")
+
+    }
+    
+    
     // Set X and Y Target Position from Grid
     func moveToPosition(notification : NSNotification){
        
@@ -201,10 +241,14 @@ class ViewController: NSViewController {
         let yTarget = Int(targetString.componentsSeparatedByString(",")[1])
         targetPosition.x = xTarget!
         targetPosition.y = yTarget!
+        
+        moveProgressWheel.hidden = false
     }
     
     
     func progress(){
+        
+        
         
     }
     
@@ -223,6 +267,8 @@ class ViewController: NSViewController {
             centerRigViewController!.updateCameraPosition()
             print("going to RigView")
             
+            centerGridViewController?.grid.startPosition = grid.startPosition
+            centerGridViewController?.grid.endPosition = grid.endPosition
 //            grid.slices = NSMutableArray(capacity: columns * rows)
 //            centerGridViewController?.grid = grid
             }

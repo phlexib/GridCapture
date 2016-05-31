@@ -63,6 +63,9 @@ class LabelCollectionViewItem: NSCollectionViewItem {
         let string = xString + "," + yString
         let moveToInfo = ["moveTo" : string]
         NSNotificationCenter.defaultCenter().postNotificationName(keys.moveTo, object: self, userInfo: moveToInfo)
+        
+        
+        
             }
     
     
@@ -77,7 +80,12 @@ class LabelCollectionViewItem: NSCollectionViewItem {
         self.view.layer?.backgroundColor = slice!.itemColor.CGColor
         
     }
- 
+    // RUNTIME
+    
+    override func viewDidLoad() {
+        
+       
+    }
 
 	// MARK: NSResponder
 
@@ -97,6 +105,7 @@ class LabelCollectionViewItem: NSCollectionViewItem {
     
     // MARK: CUSTOM FUNCTIONS
     
+        
     func getPosition(itemIndex : Int , maxRows: Int, maxColumns : Int)-> (x: Int, y: Int){
         // Get X and Y Index from CollectionView
         
@@ -113,5 +122,7 @@ class LabelCollectionViewItem: NSCollectionViewItem {
         return (sliceColumn,sliceRow)
 
     }
+    
+    
 }
 

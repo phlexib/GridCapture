@@ -15,6 +15,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
     
     let keys : NSNotificationCenterKeys = NSNotificationCenterKeys()
     var rig : Rig = Rig()
+    var hasArrived = true
     var grid : GridController = GridController()
     var slices : NSMutableArray = NSMutableArray()
     var currentFrameIndex = 0
@@ -49,6 +50,8 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
     
     override func viewWillAppear() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.receiveGridInfo), name: keys.gridSettings, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GridViewController.arrived), name: keys.arrivedAtTarget, object: nil)
+        
     }
   
     override func viewDidLoad() {
@@ -94,7 +97,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
                 print("No userInfo found in notification")
                 return
         }
-        print ("received infos : \(ro) and \(col)")
+        print ("received Grid infos : \(ro) and \(col)")
         rows = ro
         columns = col
         collectionView.maxNumberOfColumns = Int(columns)
@@ -103,6 +106,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         collectionView.reloadData()
         
     }
+    
     
     
     //MARK: CUSTOM FUNCTIONS
@@ -164,7 +168,30 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         //        horizontalSlider.enabled = false
         //        verticalSLider.enabled = false
     }
-          
+    
+    
+    func arrived(){
+        
+        var currentItem = LabelCollectionViewItem()
+        
+        for i in 0..<grid.slices.count {
+            let collectionItem = grid.slices[i] as! LabelCollectionViewItem
+            if collectionItem.slice!.status == .current{
+                currentItem = collectionItem
+                print(i)
+                break
+            }
+            
+        }
+        
+        currentItem.slice?.status = .took
+        currentItem.view.layer?.backgroundColor = currentItem.slice!.itemColor.CGColor
+        hasArrived = true
+    }
+    
+    func sequenceCapture(){
+        
+    }
     
     //MARK: NSCollectionViewDataSource
     

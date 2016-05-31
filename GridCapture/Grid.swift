@@ -16,6 +16,8 @@ class Grid: NSObject {
     var columns : Int
     var rows : Int
     var sliceArray : NSMutableArray
+    var startPosition = (0,0)
+    var endPosition = (1000,1000)
     var totalOfSlices : Int {
         get{
           return (Int(rows) * Int(columns))

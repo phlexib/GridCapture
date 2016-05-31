@@ -15,19 +15,20 @@ class NSNotificationCenterKeys: NSObject {
     // Keys for All notifications
     
     let cameraPositionKey = "cameraPositionKey"
-    let homeKey = "homeKey"
-    let startKey = "startKey"
-    let endKey = "endKey"
-    let recordKey = "recordKey"
-    let pictureKey = "pictureKey"
-    let frameKey = "frameKey"
+    let home = "home"
+    let start = "star"
+    let end = "end"
+    let record = "record"
+    let picture = "picture"
+    let frame = "frame"
     let rigIsConnected = "rigIsConnected"
     let rigIsDisconnected = "rigIsDisconnected"
     let gridSettings = "gridSettings"
     let setUpGrid = "setUpGrid"
     let moveTo = "moveTo"
     let arduinoCallback = "arduinoCallback"
-    
+    let arrivedAtTarget = "arrivedAtTarget"
+    let pictureDone = "pictureDone"
         
     // MARK : parse Data to assign X and Y
     

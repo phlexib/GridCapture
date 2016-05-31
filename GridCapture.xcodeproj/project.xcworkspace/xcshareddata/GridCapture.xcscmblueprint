@@ -5,11 +5,13 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "3F174B3C61B48102C1F32DF1DB16C7E3A255B091" : 0,
+    "4B621E13C935B7EBD42812B8FAFFF473D823F944" : 0,
     "5A811E91F5DFF59170683E14D2C5755F19DE18CB" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DB4BC11C-83B5-4B89-94CA-E6E3046C03C5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "3F174B3C61B48102C1F32DF1DB16C7E3A255B091" : "GridCapture\/",
+    "4B621E13C935B7EBD42812B8FAFFF473D823F944" : "GridCapture\/GridCapture\/ProgressKit\/",
     "5A811E91F5DFF59170683E14D2C5755F19DE18CB" : "GridCapture\/Frameworks\/ORSSerialPort\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "GridCapture",
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/phlexib\/GridCapture.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3F174B3C61B48102C1F32DF1DB16C7E3A255B091"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kaunteya\/ProgressKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4B621E13C935B7EBD42812B8FAFFF473D823F944"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/armadsen\/ORSSerialPort.git",
