@@ -51,18 +51,27 @@ class LabelCollectionViewItem: NSCollectionViewItem {
     // CONTEXTUAL ACTIONS
 
     @IBAction func goToFrame(sender: AnyObject) {
+       
+//       slice!.goToFrame()
         
-        slice!.position = getPosition(slice!.indexFrame,maxRows: collectionView.maxNumberOfRows,maxColumns: collectionView.maxNumberOfColumns)
-        slice!.status = .current
+        slice!.goToFrameWithcallBack({() -> Void in
+            
+                print("completed action")
+            
+        })
         self.view.layer?.backgroundColor = slice!.itemColor.CGColor
-        print ("GO TO POSITION\(slice!.stepPosition)")
         
-        let xString = String(slice!.stepPosition.x)
-        let yString = String(slice!.stepPosition.y)
-        
-        let string = xString + "," + yString
-        let moveToInfo = ["moveTo" : string]
-        NSNotificationCenter.defaultCenter().postNotificationName(keys.moveTo, object: self, userInfo: moveToInfo)
+        //        slice!.position = getPosition(slice!.indexFrame,maxRows: collectionView.maxNumberOfRows,maxColumns: collectionView.maxNumberOfColumns)
+//        slice!.status = .standbye
+//        self.view.layer?.backgroundColor = slice!.itemColor.CGColor
+//        print ("GO TO POSITION\(slice!.stepPosition)")
+//        
+//        let xString = String(slice!.stepPosition.x)
+//        let yString = String(slice!.stepPosition.y)
+//        
+//        let string = xString + "," + yString
+//        let moveToInfo = ["moveTo" : string]
+//        NSNotificationCenter.defaultCenter().postNotificationName(keys.moveTo, object: self, userInfo: moveToInfo)
         
         
         
@@ -104,24 +113,6 @@ class LabelCollectionViewItem: NSCollectionViewItem {
     
     
     // MARK: CUSTOM FUNCTIONS
-    
-        
-    func getPosition(itemIndex : Int , maxRows: Int, maxColumns : Int)-> (x: Int, y: Int){
-        // Get X and Y Index from CollectionView
-        
-        var sliceColumn = itemIndex % maxColumns
-        
-        if sliceColumn == 0{
-            sliceColumn = maxColumns
-        }
-        
-        
-        let sliceRowFloat =   Float(slice!.indexFrame) / Float(maxColumns)
-        let sliceRow = Int(ceil(sliceRowFloat))
-
-        return (sliceColumn,sliceRow)
-
-    }
     
     
 }

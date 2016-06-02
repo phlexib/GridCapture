@@ -128,7 +128,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             let collItem = (collectionView.itemAtIndexPath(pathIndex) as! LabelCollectionViewItem)
             let sliceItem = collItem.representedObject as! Slice!
             sliceItem.indexFrame = index+1
-            sliceItem.position = collItem.getPosition(index+1, maxRows: collectionView.maxNumberOfRows, maxColumns: collectionView.maxNumberOfColumns)
+            sliceItem.position = sliceItem.getPosition(sliceItem.indexFrame, maxRows: collectionView.maxNumberOfRows, maxColumns: collectionView.maxNumberOfColumns)
             grid.slices.addObject(collItem)
            
             
@@ -176,7 +176,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
         
         for i in 0..<grid.slices.count {
             let collectionItem = grid.slices[i] as! LabelCollectionViewItem
-            if collectionItem.slice!.status == .current{
+            if collectionItem.slice!.status == .standbye{
                 currentItem = collectionItem
                 print(i)
                 break
@@ -184,7 +184,7 @@ class GridViewController: NSViewController, NSCollectionViewDataSource {
             
         }
         
-        currentItem.slice?.status = .took
+        currentItem.slice?.status = .current
         currentItem.view.layer?.backgroundColor = currentItem.slice!.itemColor.CGColor
         hasArrived = true
     }

@@ -130,6 +130,12 @@ class ViewController: NSViewController {
     }
     
     
+    @IBAction func recSequenceBtn(sender: AnyObject) {
+    
+    }
+    
+    
+    
     func updateInfo(text: String) {
         yPositionLabel.stringValue = text
     }
