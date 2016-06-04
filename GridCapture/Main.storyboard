@@ -780,7 +780,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zmS-It-srx">
-                                        <rect key="frame" x="43" y="594" width="83" height="18"/>
+                                        <rect key="frame" x="43" y="594" width="84" height="18"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Overlay Grid" id="scU-Wx-TIu">
                                             <font key="font" metaFont="systemLight" size="14"/>
                                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -828,7 +828,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BwY-Uc-qsW">
-                                        <rect key="frame" x="43" y="448" width="74" height="24"/>
+                                        <rect key="frame" x="43" y="448" width="75" height="24"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Camera" id="bw0-Mi-zdz">
                                             <font key="font" metaFont="system" size="20"/>
                                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -840,7 +840,7 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cameraSttings" id="nkW-u4-MNa"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Zw-ku-LPX" userLabel="exposure">
-                                        <rect key="frame" x="43" y="289" width="61" height="17"/>
+                                        <rect key="frame" x="43" y="289" width="62" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="F76-dz-UW9"/>
                                         </constraints>
@@ -902,7 +902,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T4Z-CP-iJw">
-                                        <rect key="frame" x="208" y="401" width="76" height="26"/>
+                                        <rect key="frame" x="208" y="401" width="77" height="26"/>
                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="q2U-16-j4n" id="mFs-o9-ZHh">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
@@ -916,7 +916,7 @@
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <popUpButton verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meg-tr-VOV">
-                                        <rect key="frame" x="208" y="374" width="76" height="26"/>
+                                        <rect key="frame" x="208" y="374" width="77" height="26"/>
                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="n09-RV-rt8" id="z9u-Vy-OaO">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
@@ -930,7 +930,7 @@
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t55-oS-9MT" userLabel="wb">
-                                        <rect key="frame" x="43" y="185" width="91" height="17"/>
+                                        <rect key="frame" x="43" y="185" width="92" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="1bS-lW-cD4"/>
                                             <constraint firstAttribute="width" constant="87" id="TIp-UR-YIO"/>
@@ -1477,18 +1477,6 @@
                 <customObject id="l0G-Ij-E42" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2209" y="2034"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="oSf-et-Fad">
-            <objects>
-                <viewController id="Mze-gR-dWM" sceneMemberID="viewController">
-                    <view key="view" id="bJg-9N-n56">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="Qa4-BM-FqS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
