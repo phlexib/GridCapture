@@ -1049,7 +1049,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="mbK-7J-xTW" userLabel="centerContainer">
+                            <containerView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mbK-7J-xTW" userLabel="centerContainer">
                                 <rect key="frame" x="300" y="100" width="870" height="650"/>
                                 <connections>
                                     <segue destination="LIN-h6-cWr" kind="embed" identifier="centerContainersegue" id="bbO-Ll-Yjk"/>

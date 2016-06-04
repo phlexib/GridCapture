@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Volumes/Data/Works/POVevolving/Xcode/WIP/GridCapture/GridCapture.xcodeproj">
+      location = "self:GridCapture.xcodeproj">
    </FileRef>
 </Workspace>
